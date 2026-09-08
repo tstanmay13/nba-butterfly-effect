@@ -5,7 +5,8 @@ export type AssetKind =
   | 'obligation'
   | 'pick'
   | 'swap'
-  | 'cash';
+  | 'cash'
+  | 'consideration';
 export interface Team {
   id: TeamId;
   name: string;

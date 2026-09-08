@@ -34,6 +34,8 @@ import {
 } from '../../lib/history';
 import { HistoryMap, TradeScene } from './TradeScene';
 import { Inspector } from './Inspector';
+import { Home } from './Home';
+import { readSurface } from '../../lib/surface';
 import { Overlay } from './Archive';
 import initialJSON from '../../data/initial.json';
 import catalogJSON from '../../data/catalog.json';
@@ -59,6 +61,7 @@ function Emblem() {
 }
 export default function Butterfly() {
   const [web, setWeb] = useState(false);
+  const [home, setHome] = useState(true);
   const [data, setData] = useState(initial),
     [state, setState] = useState<ViewState>(() => initialState(initial));
   const [playing, setPlaying] = useState(false),
@@ -91,7 +94,9 @@ export default function Butterfly() {
         const view =
           search !== undefined ? parseState(search, next) : initialState(next);
         setData(next);
+        setHome(false);
         setState(view);
+        if (push) window.scrollTo({ top: 0, behavior: 'instant' });
         setOverlay(null);
         if (push) history.pushState(null, '', stateQuery(view));
       } catch {
@@ -104,16 +109,30 @@ export default function Butterfly() {
     [],
   );
   useEffect(() => {
-    document.title = `${web ? 'The Butterfly Web' : data.story.title} — NBA Butterfly Effect`;
-  }, [web, data.story.title]);
+    document.title =
+      home && !web
+        ? 'NBA Butterfly Effect — Every trade has an afterlife'
+        : `${web ? 'The Butterfly Web' : data.story.title} — NBA Butterfly Effect`;
+  }, [web, home, data.story.title]);
   useEffect(() => {
     const restore = () => {
       const search = location.search;
-      if (new URLSearchParams(search).get('view') === 'web') {
+      const surface = readSurface(search);
+      setPlaying(false);
+      if (surface === 'web') {
+        ++request.current;
+        setLoading(false);
         setWeb(true);
         return;
       }
       setWeb(false);
+      if (surface === 'home') {
+        ++request.current;
+        setHome(true);
+        setLoading(false);
+        setError('');
+        return;
+      }
       void loadStory(
         new URLSearchParams(search).get('story') || 'luka',
         search,
@@ -224,15 +243,35 @@ export default function Butterfly() {
     }
     setPlaying(true);
   }
+  function enterWeb() {
+    ++request.current;
+    setLoading(false);
+    setPlaying(false);
+    setError('');
+    history.pushState(null, '', '?view=web&scope=all');
+    setWeb(true);
+  }
+  function goHome() {
+    ++request.current;
+    setPlaying(false);
+    setLoading(false);
+    setHome(true);
+    setWeb(false);
+    setError('');
+    history.pushState(null, '', '/');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
   if (web)
     return (
       <Suspense
         fallback={<div className="web-loading">Unfolding the archive…</div>}
       >
         <Universe
+          closeLabel={home ? 'Back to home' : 'Back to the story'}
+          onHome={goHome}
           onClose={() => {
             setWeb(false);
-            history.pushState(null, '', stateQuery(state));
+            history.pushState(null, '', home ? '/' : stateQuery(state));
           }}
           onStory={(id) => {
             setWeb(false);
@@ -240,6 +279,16 @@ export default function Butterfly() {
           }}
         />
       </Suspense>
+    );
+  if (home)
+    return (
+      <Home
+        stories={catalog}
+        onStory={(id) => void loadStory(id)}
+        onWeb={enterWeb}
+        loading={loading}
+        error={error}
+      />
     );
   const root = t.id === data.story.root;
   return (
@@ -253,7 +302,7 @@ export default function Butterfly() {
       <header className="site-header">
         <button
           className="brand"
-          onClick={() => void loadStory('luka')}
+          onClick={goHome}
           aria-label="NBA Butterfly Effect home"
         >
           <Emblem />
@@ -267,11 +316,7 @@ export default function Butterfly() {
           <button
             className="web-nav"
             aria-label="All connections"
-            onClick={() => {
-              setPlaying(false);
-              history.pushState(null, '', '?view=web');
-              setWeb(true);
-            }}
+            onClick={enterWeb}
           >
             <GitBranch size={15} />
             <span>ALL CONNECTIONS</span>

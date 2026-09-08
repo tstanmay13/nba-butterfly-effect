@@ -248,7 +248,11 @@ export function linksBetween(events: Transaction[]) {
   }
   return links;
 }
-export function teamName(data: StoryData, id: string, date: string) {
+export function teamName(
+  data: Pick<StoryData, 'teams'>,
+  id: string,
+  date: string,
+) {
   const team = data.teams[id];
   return (
     team?.aliases?.find((a) => a.from <= date && a.to >= date)?.name ||
@@ -267,7 +271,8 @@ export function assetLabel(asset: Asset, form?: string) {
         obligation: 'Future pick',
         pick: 'Draft selection',
         swap: 'Swap right',
-        cash: 'Consideration',
+        cash: 'Cash',
+        consideration: 'Other consideration',
         rights: 'Draft rights',
       }[asset.kind];
 }

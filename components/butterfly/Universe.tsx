@@ -25,6 +25,7 @@ import {
   searchNetwork,
 } from '../../lib/network';
 import { Inspector } from './Inspector';
+import { ArchiveAtlas } from './ArchiveAtlas';
 import {
   readWebState,
   webStateQuery,
@@ -34,8 +35,12 @@ let archiveCache: Archive | undefined;
 export default function Universe({
   onClose,
   onStory,
+  onHome,
+  closeLabel,
 }: {
   onClose: () => void;
+  onHome: () => void;
+  closeLabel: string;
   onStory: (id: string) => void;
 }) {
   const [archive, setArchive] = useState<Archive | undefined>(archiveCache),
@@ -126,27 +131,34 @@ export default function Universe({
     },
     [draw],
   );
-  const fit = useCallback(() => {
-    if (!display) return;
-    const nodes = display.nodes;
-    if (!nodes.length) return;
-    const minX = Math.min(...nodes.map((n) => n.x)) - 140,
-      maxX = Math.max(...nodes.map((n) => n.x)) + 140,
-      minY = Math.min(...nodes.map((n) => n.y)) - 90,
-      maxY = Math.max(...nodes.map((n) => n.y)) + 90;
-    const box = canvas.current?.getBoundingClientRect();
-    if (box)
-      centerOn(
-        (minX + maxX) / 2,
-        (minY + maxY) / 2,
-        Math.max(
-          0.2,
-          Math.min(0.85, box.width / (maxX - minX), box.height / (maxY - minY)),
-        ),
-      );
-  }, [display, centerOn]);
+  const fit = useCallback(
+    (wholeNeighborhood = false) => {
+      if (!display) return;
+      const nodes = display.nodes;
+      if (!nodes.length) return;
+      const minX = Math.min(...nodes.map((n) => n.x)) - 140,
+        maxX = Math.max(...nodes.map((n) => n.x)) + 140,
+        minY = Math.min(...nodes.map((n) => n.y)) - 90,
+        maxY = Math.max(...nodes.map((n) => n.y)) + 90;
+      const box = canvas.current?.getBoundingClientRect();
+      if (box)
+        centerOn(
+          (minX + maxX) / 2,
+          (minY + maxY) / 2,
+          Math.max(
+            wholeNeighborhood ? 0.06 : 0.82,
+            Math.min(
+              0.85,
+              box.width / (maxX - minX),
+              box.height / (maxY - minY),
+            ),
+          ),
+        );
+    },
+    [display, centerOn],
+  );
   useEffect(() => {
-    if (!display || !state || !canvas.current) return;
+    if (!display || !state?.focus || !canvas.current || list) return;
     const resize = () => {
       const node = display.nodes.find((n) => n.id === state.focus);
       if (node && canvas.current!.clientWidth < 600)
@@ -178,14 +190,16 @@ export default function Universe({
       focus: isEvent ? id : state.focus,
       query: '',
       team: 'ALL',
+      era: null,
     });
     setList(false);
+    canvas.current?.scrollTo({ top: 0, left: 0 });
   }
   function changeZoom(delta: number) {
     const box = canvas.current?.getBoundingClientRect();
     if (!box) return;
     const tr = transform.current,
-      s = Math.min(1.8, Math.max(0.18, tr.scale * delta));
+      s = Math.min(1.8, Math.max(0.2, tr.scale * delta));
     const x = (box.width / 2 - tr.x) / tr.scale,
       y = (box.height / 2 - tr.y) / tr.scale;
     centerOn(x, y, s);
@@ -197,7 +211,16 @@ export default function Universe({
       archive.transactions.some((t) => t.id === state.focus && t.date <= at)
         ? state.focus
         : null;
-    update({ ...state, at, node: null, focus }, true);
+    const era =
+      state.era !== null &&
+      archive.transactions.some(
+        (t) =>
+          t.date <= at &&
+          Math.floor(Number(t.date.slice(0, 4)) / 10) * 10 === state.era,
+      )
+        ? state.era
+        : null;
+    update({ ...state, at, node: null, focus, era }, true);
   }
   async function share() {
     if (state) update(state, true);
@@ -237,7 +260,15 @@ export default function Universe({
       )
       .map((n) => n.id),
   );
-  const relevant = visible.nodes.filter((n) => matches.has(n.id));
+  const displayIds = new Set(display.nodes.map((n) => n.id));
+  const relevant = visible.nodes.filter(
+    (n) =>
+      matches.has(n.id) &&
+      (state.focus
+        ? displayIds.has(n.id)
+        : state.era === null ||
+          Math.floor(Number(n.event.date.slice(0, 4)) / 10) * 10 === state.era),
+  );
   const focused = archive.transactions.find((t) => t.id === state.focus),
     relatedStories = focused
       ? archive.stories.filter((s) => s.transactions.includes(focused.id))
@@ -267,19 +298,18 @@ export default function Universe({
   return (
     <div className={`universe ${state.node ? 'has-web-inspector' : ''}`}>
       <header className="web-header">
-        <button
-          className="web-back"
-          onClick={onClose}
-          aria-label="Back to the story"
-        >
+        <button className="web-back" onClick={onClose} aria-label={closeLabel}>
           <ArrowLeft size={17} />
-          <span>BACK TO THE STORY</span>
+          <span>{closeLabel}</span>
         </button>
         <div>
           <GitBranch size={21} />
           <h1>THE BUTTERFLY WEB</h1>
           <span>{archive.transactions.length} trades & moments</span>
         </div>
+        <button className="web-home-link" onClick={onHome}>
+          All stories
+        </button>
         <button
           className="icon-button"
           onClick={share}
@@ -296,7 +326,16 @@ export default function Universe({
             placeholder="Find a player, team, or trade…"
             value={state.query}
             onChange={(e) =>
-              update({ ...state, query: e.target.value, focus: null }, true)
+              update(
+                {
+                  ...state,
+                  query: e.target.value,
+                  focus: null,
+                  node: null,
+                  era: null,
+                },
+                true,
+              )
             }
           />
           {state.query && (
@@ -313,7 +352,16 @@ export default function Universe({
             aria-label="Filter web by franchise"
             value={state.team}
             onChange={(e) =>
-              update({ ...state, team: e.target.value, focus: null }, true)
+              update(
+                {
+                  ...state,
+                  team: e.target.value,
+                  focus: null,
+                  node: null,
+                  era: null,
+                },
+                true,
+              )
             }
           >
             <option value="ALL">Every franchise</option>
@@ -331,15 +379,18 @@ export default function Universe({
           className="web-overview-toggle"
           aria-label="Entire archive"
           aria-pressed={!state.focus}
-          onClick={() =>
+          onClick={() => {
+            setList(false);
+            canvas.current?.scrollTo({ top: 0, left: 0 });
             update({
               ...state,
               focus: null,
               node: null,
               query: '',
               team: 'ALL',
-            })
-          }
+              era: null,
+            });
+          }}
         >
           <GitBranch size={15} />
           <span>Entire archive</span>
@@ -356,11 +407,11 @@ export default function Universe({
       <div className="web-main">
         <div className="web-canvas-area">
           <div
-            className={`web-canvas ${list ? 'is-list' : ''}`}
+            className={`web-canvas ${list ? 'is-list' : ''} ${!state.focus && !list ? 'is-atlas' : ''}`}
             ref={canvas}
             data-testid="connection-web"
             onPointerDown={(e) => {
-              if (list) return;
+              if (list || !state.focus) return;
               if ((e.target as HTMLElement).closest('button,a,input,select'))
                 return;
               drag.current = {
@@ -404,6 +455,27 @@ export default function Universe({
                   </button>
                 ))}
               </div>
+            ) : !state.focus ? (
+              <ArchiveAtlas
+                archive={archive}
+                visible={visible}
+                matches={matches}
+                era={state.era}
+                filtered={!!state.query || state.team !== 'ALL'}
+                at={state.at}
+                onSelect={select}
+                onEra={(era) => {
+                  update({
+                    ...state,
+                    era,
+                    focus: null,
+                    node: null,
+                    query: '',
+                    team: 'ALL',
+                  });
+                  canvas.current?.scrollTo({ top: 0 });
+                }}
+              />
             ) : (
               <>
                 <div
@@ -547,61 +619,13 @@ export default function Universe({
                     <Minus size={18} />
                   </button>
                   <button
-                    onClick={fit}
-                    aria-label="Fit all visible connections"
+                    onClick={() => fit(true)}
+                    aria-label="Fit entire neighborhood"
                   >
                     <Expand size={17} />
                   </button>
                 </div>
               </>
-            )}
-            {!state.focus && !state.query && state.team === 'ALL' && (
-              <div className="web-hint">
-                <strong>A whole archive, one web.</strong>
-                <span>
-                  This is the whole archive. Select one deal to unfold a clear
-                  view of its earlier and later connections.
-                </span>
-                <small>
-                  Every node is a complete package. Arrows follow shared assets
-                  through time. Dashed edges mark untraced moves.
-                </small>
-                <button
-                  className="web-start"
-                  onClick={() => select('luka-draft-trade')}
-                >
-                  {state.at < '2018-06-21'
-                    ? 'Jump to Luka · 2018'
-                    : 'Start with Luka'}{' '}
-                  <ArrowRight size={14} />
-                </button>
-              </div>
-            )}
-            {(state.query || state.team !== 'ALL') && (
-              <div className="web-results">
-                <span>
-                  {relevant.length} matches through {shortDate(state.at)}
-                </span>
-                {relevant.slice(0, 6).map((n) => (
-                  <button
-                    key={n.id}
-                    onClick={() => {
-                      select(n.id);
-                    }}
-                  >
-                    {n.event.shortTitle}
-                    <ArrowUpRight size={13} />
-                  </button>
-                ))}
-                {relevant.length > 6 && (
-                  <button onClick={() => setList(true)}>
-                    See all {relevant.length} results <ArrowRight size={13} />
-                  </button>
-                )}
-                {!relevant.length && (
-                  <p>Try another name or advance the date.</p>
-                )}
-              </div>
             )}
             {state.focus && (
               <div className="web-focus-label">

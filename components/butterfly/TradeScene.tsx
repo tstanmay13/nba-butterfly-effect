@@ -7,6 +7,7 @@ import {
   Ticket,
   Shuffle,
   Coins,
+  FileText,
   ArrowUpRight,
   ChevronDown,
 } from 'lucide-react';
@@ -19,6 +20,7 @@ const iconFor = {
   pick: Ticket,
   swap: Shuffle,
   cash: Coins,
+  consideration: FileText,
 };
 export function AssetNode({
   asset,

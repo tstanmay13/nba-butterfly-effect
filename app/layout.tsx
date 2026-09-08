@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './collection.css';
 import metadataCounts from '../data/metadata.json';
 export const metadata: Metadata = {
   metadataBase: new URL('https://butterfly.tanmay-singh.com'),

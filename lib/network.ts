@@ -19,85 +19,39 @@ export interface NetworkLayout {
   width: number;
   height: number;
 }
-/** Deterministic spring layout, calculated once after the optional archive loads. */
+/** Stable, collision-free year columns. The overview groups these into eras;
+ * the detailed butterfly lays out only the selected package and its neighbors. */
 export function layoutNetwork(archive: Archive): NetworkLayout {
-  const events = [...archive.transactions].sort(compareEvents),
-    links = linksBetween(events),
-    width = 2500,
-    height = Math.max(1300, events.length * 22);
-  const min = Number(events[0].date.slice(0, 4)),
-    max = Number(events.at(-1)!.date.slice(0, 4));
-  const hash = (id: string) =>
-    id.split('').reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 2166136261);
-  const nodes = events.map((event) => ({
-    id: event.id,
-    event,
-    x:
-      180 +
-      ((Number(event.date.slice(0, 4)) - min) / (max - min || 1)) *
-        (width - 360),
-    y: 120 + (hash(event.id) % (height - 240)),
-  }));
-  const byId = new Map(nodes.map((n) => [n.id, n]));
-  for (let iteration = 0; iteration < 380; iteration++) {
-    const force = new Map(nodes.map((n) => [n.id, { x: 0, y: 0 }]));
-    for (let i = 0; i < nodes.length; i++)
-      for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i],
-          b = nodes[j];
-        let dx = b.x - a.x,
-          dy = b.y - a.y;
-        if (Math.abs(dx) + Math.abs(dy) < 0.1) {
-          dx = 0.1;
-          dy = 0.1;
-        }
-        const sq = Math.max(dx * dx + dy * dy, 100),
-          distance = Math.sqrt(sq);
-        const push = Math.min(14, 36000 / sq);
-        const fx = (dx / distance) * push,
-          fy = (dy / distance) * push;
-        force.get(a.id)!.x -= fx;
-        force.get(a.id)!.y -= fy;
-        force.get(b.id)!.x += fx;
-        force.get(b.id)!.y += fy;
-        if (Math.abs(dx) < 230 && Math.abs(dy) < 112) {
-          const pushY = (112 - Math.abs(dy)) * 0.22 * (dy >= 0 ? 1 : -1);
-          force.get(a.id)!.y -= pushY;
-          force.get(b.id)!.y += pushY;
-        }
-      }
-    for (const link of links) {
-      const a = byId.get(link.from)!,
-        b = byId.get(link.to)!,
-        dx = b.x - a.x,
-        dy = b.y - a.y,
-        dist = Math.max(1, Math.hypot(dx, dy)),
-        strength = (dist - 310) * 0.012;
-      force.get(a.id)!.x += (dx / dist) * strength;
-      force.get(a.id)!.y += (dy / dist) * strength;
-      force.get(b.id)!.x -= (dx / dist) * strength;
-      force.get(b.id)!.y -= (dy / dist) * strength;
-    }
-    for (const n of nodes) {
-      const target =
-        180 +
-        ((Number(n.event.date.slice(0, 4)) - min) / (max - min || 1)) *
-          (width - 360);
-      const f = force.get(n.id)!;
-      n.x = Math.max(
-        130,
-        Math.min(
-          width - 130,
-          n.x + Math.max(-18, Math.min(18, f.x + (target - n.x) * 0.006)),
-        ),
-      );
-      n.y = Math.max(
-        80,
-        Math.min(height - 80, n.y + Math.max(-18, Math.min(18, f.y))),
-      );
-    }
+  const events = [...archive.transactions].sort(compareEvents);
+  const years = [...new Set(events.map((t) => t.date.slice(0, 4)))];
+  const rows = new Map<string, number>();
+  const nodes = events.map((event) => {
+    const year = event.date.slice(0, 4);
+    const row = rows.get(year) || 0;
+    rows.set(year, row + 1);
+    return {
+      id: event.id,
+      event,
+      x: 160 + years.indexOf(year) * 320,
+      y: 110 + row * 130,
+    };
+  });
+  return {
+    nodes,
+    links: linksBetween(events),
+    width: Math.max(640, years.length * 320),
+    height: Math.max(360, Math.max(...rows.values()) * 130 + 90),
+  };
+}
+export function archiveEras(layout: NetworkLayout) {
+  const groups = new Map<number, NetworkNode[]>();
+  for (const node of layout.nodes) {
+    const decade = Math.floor(Number(node.event.date.slice(0, 4)) / 10) * 10;
+    groups.set(decade, [...(groups.get(decade) || []), node]);
   }
-  return { nodes, links, width, height };
+  return [...groups]
+    .sort(([a], [b]) => a - b)
+    .map(([decade, nodes]) => ({ decade, nodes }));
 }
 export function neighborhood(
   layout: NetworkLayout,

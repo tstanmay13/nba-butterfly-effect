@@ -1,5 +1,6 @@
 import { searchStories } from '../lib/search';
 import { readWebState, webStateQuery } from '../lib/web-state';
+import { readSurface } from '../lib/surface';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -10,6 +11,7 @@ import {
   neighborhood,
   networkAt,
   searchNetwork,
+  archiveEras,
 } from '../lib/network';
 import { linksBetween } from '../lib/history';
 const archive = JSON.parse(
@@ -113,7 +115,7 @@ void test('focused view cannot recover connections hidden by the archive date', 
 });
 void test('web URLs preserve focused and entire-archive modes on reload', () => {
   const initial = readWebState('?view=web', archive);
-  assert.equal(initial.focus, 'luka-draft-trade');
+  assert.equal(initial.focus, null);
   assert.equal(initial.node, null);
   const focused = {
     ...initial,
@@ -158,5 +160,66 @@ void test('archive discovery indexes actual players behind editorial titles', ()
     searchStories(catalog, 'New Jersey', 'Classic').some(
       (s) => s.id === 'carter',
     ),
+  );
+});
+void test('the collection is home while story and selected web links remain direct entrances', () => {
+  assert.equal(readSurface(''), 'home');
+  assert.equal(readSurface('?utm_source=friend'), 'home');
+  assert.equal(readSurface('?story=brooklyn&node=tatum'), 'story');
+  assert.equal(readSurface('?view=web&scope=all'), 'web');
+});
+void test('era overview partitions every visible event once without leaking future trades', () => {
+  const past = networkAt(layout, '2018-06-21');
+  const eras = archiveEras(past);
+  assert.equal(eras.flatMap((e) => e.nodes).length, past.nodes.length);
+  assert.equal(
+    new Set(eras.flatMap((e) => e.nodes.map((n) => n.id))).size,
+    past.nodes.length,
+  );
+  for (const era of eras) {
+    assert.ok(era.decade <= 2010);
+    assert.ok(
+      era.nodes.every(
+        (n) =>
+          n.event.date <= '2018-06-21' &&
+          Number(n.event.date.slice(0, 4)) >= era.decade &&
+          Number(n.event.date.slice(0, 4)) < era.decade + 10,
+      ),
+    );
+  }
+});
+void test('archive nodes have collision-free positions even when many trades occur in the same year', () => {
+  for (let i = 0; i < layout.nodes.length; i++) {
+    for (let j = i + 1; j < layout.nodes.length; j++) {
+      const a = layout.nodes[i],
+        b = layout.nodes[j];
+      assert.ok(
+        Math.abs(a.x - b.x) >= 240 || Math.abs(a.y - b.y) >= 96,
+        `${a.id} overlaps ${b.id}`,
+      );
+    }
+  }
+});
+void test('decade URLs restore their selection and reject a decade beyond the revealed date', () => {
+  const state = readWebState('?view=web&scope=all&era=2000', archive);
+  assert.equal(state.era, 2000);
+  assert.deepEqual(readWebState(webStateQuery(state), archive), state);
+  assert.equal(
+    readWebState('?view=web&era=2020&at=2018-06-21', archive).era,
+    null,
+  );
+  assert.equal(readWebState('?view=web&era=2014', archive).era, null);
+});
+void test('malformed calendar dates never reach the graph date formatter', () => {
+  const last = [...archive.transactions]
+    .map((t) => t.date)
+    .sort()
+    .at(-1);
+  for (const date of ['2025-99-99', '2025-02-30', '2025-02-29', 'not-a-date']) {
+    assert.equal(readWebState(`?view=web&at=${date}`, archive).at, last);
+  }
+  assert.equal(
+    readWebState('?view=web&at=2024-02-29', archive).at,
+    '2024-02-29',
   );
 });

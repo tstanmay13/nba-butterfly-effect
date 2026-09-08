@@ -64,18 +64,14 @@ Every story also displays its boundary in the experience. Other outgoing assets 
 - `components/butterfly`: SVG/HTML trade scene, accumulated connection map, inspector, timeline, archive, optional all-archive web and navigation.
 - `tests/history.test.ts`: history correctness and state restoration regressions.
 
-The initial Dallas story is embedded. Other stories load on demand and are cached for the session. Photos and fonts are local. SVG paths are measured on layout changes with `ResizeObserver`; CSS runs the short reveal/flow animation. There is no animation frame React loop. Hidden tabs stop playback and animation. Reduced motion disables animation and changes guided playback to manual advancement.
+The root opens a collection home with three featured stories, recent moves and a searchable index. Dallas story data is embedded for its direct story entrance. Other stories load on demand and are cached for the session. Photos and fonts are local. SVG paths are measured on layout changes with `ResizeObserver`; CSS runs the short reveal/flow animation. There is no animation frame React loop. Hidden tabs stop playback and animation. Reduced motion disables animation and changes guided playback to manual advancement.
 
 Shared URLs encode `story`, `at`, `step`, `node`, `team`, and `mode`. `step` distinguishes separate events on the same date. Invalid dates and unavailable nodes are clamped to published history. Browser back restores the complete state. Map connections name shared asset identities; they never equate all package inputs with all outputs.
 
 See [adding a story](research/ADDING_A_STORY.md), [research and reuse](research/METHODOLOGY.md), and [validation](research/VALIDATION.md).
 
-The **All connections** web loads the full canonical archive on demand. It opens on a quiet, one-hop butterfly around Luka’s draft exchange. Earlier packages sit to the left, later packages to the right, with explicit buttons to follow either direction. The complete archive is one control away. It supports pan/zoom, franchise filtering, accent-insensitive player search, a readable list, date filtering and shared URLs. Solid links track shared assets with continuous known ownership; dashed links explicitly mark intervening moves outside the curated record. See `lib/network.ts` and `tests/network.test.ts`.
+The **All connections** web loads the canonical archive on demand and opens a readable decade map. Opening an era shows complete events at normal text size; choosing an event unfolds its immediate connected packages. The archive is never scaled into hundreds of tiny cards. Earlier packages sit to the left and later packages to the right, with explicit buttons to follow either direction. Search, franchise filtering, era selection, a scoped readable list, date filtering and shareable URLs remain available. Solid detailed links track shared assets with continuous known ownership; dashed links explicitly mark intervening moves outside the curated record. See `lib/network.ts` and `tests/network.test.ts`.
 
-## Deployment
+## Zero-purchase constraint
 
-This is a static Sites project; its non-secret project binding is in `.openai/hosting.json`. Build, commit, push the same source to GitHub and the Sites source remote, package `dist/client` with the Sites packaging helper, save that exact commit and deploy the saved version. Never store source credentials in files or remote URLs. DNS changes are limited to `butterfly.tanmay-singh.com` and its hostname-specific verification records.
-
-## Credits and licensing
-
-Original application code: MIT. Prepared facts have linked sources and original wording; source articles remain their publishers’ property. Photo adaptations retain their CC licenses. See [LICENSE](LICENSE), [image credits](data/image-credits.json), and the in-app methodology/credits view. NBA and team names identify historical participants; this is not an affiliated or endorsed product.
+The owner explicitly instructed **never pay for anything**. No data, subscription, API credits, image licenses, archival access or hosting upgrades may be purchased. Research uses accessible free sources; do not bypass blocked pages or scrape a restricted source database. The existing included hosting is retained. See [source feasibility and the free expansion decision](research/ALL_TRADES_FEASIBILITY.md).
