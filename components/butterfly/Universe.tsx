@@ -146,7 +146,7 @@ export default function Universe({
           (minX + maxX) / 2,
           (minY + maxY) / 2,
           Math.max(
-            wholeNeighborhood ? 0.06 : 0.82,
+            wholeNeighborhood ? 0.06 : 0.72,
             Math.min(
               0.85,
               box.width / (maxX - minX),
@@ -581,7 +581,7 @@ export default function Universe({
                         style={
                           {
                             left: n.x - (state.focus ? 120 : 105),
-                            top: n.y - (state.focus ? 48 : 39),
+                            top: n.y - (state.focus ? 56 : 39),
                             '--node-color': color,
                           } as React.CSSProperties
                         }

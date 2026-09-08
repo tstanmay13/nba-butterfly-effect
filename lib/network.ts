@@ -112,12 +112,12 @@ export function focusedNetwork(
       y: height / 2 + (i - (nodes.length - 1) / 2) * 120,
     }));
   return {
-    width: 1320,
+    width: 1140,
     height,
     nodes: [
       ...wing(before, 150),
-      { ...center, x: 660, y: height / 2 },
-      ...wing(after, 1170),
+      { ...center, x: 570, y: height / 2 },
+      ...wing(after, 990),
     ],
     links,
   };

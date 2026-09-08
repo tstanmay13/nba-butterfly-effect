@@ -5,7 +5,7 @@
 Production: https://butterfly.tanmay-singh.com  
 Repository: https://github.com/tstanmay13/nba-butterfly-effect
 
-25 stories, 132 unique events, prepared locally from cited records. No account, runtime scraping, analytics, external fonts, or paid data service. This repository and hosting project are separate from Tanmay’s personal site.
+35 stories, 178 unique events (125 trades plus 53 draft/pick-resolution moments), and 318 source records, prepared locally from cited facts. No account, runtime scraping, analytics, external fonts, or paid data service. This repository and hosting project are separate from Tanmay’s personal site.
 
 ## Run and verify
 
@@ -51,6 +51,16 @@ The build is a static export in `dist/client`. `npm run prepare-data` regenerate
 | The Westbrook exchange | The 2019 exchange, Westbrook’s 2020 Washington move, Topić’s 2024 selection and Paul-return branches through February 2026. Westbrook’s Lakers arrival and subsequent career are outside this route. Original future-pick terms are recorded; untraced outcomes are not current holdings. |
 | What Durant left behind | Durant’s 2019 sign-and-trade and 2023 Phoenix package; selected Russell, Wiggins, Kuminga and Cameron Johnson branches through July 2025. Durant’s 2025 Houston deal, the Bridges branch and remaining pick outcomes are not traced. Later player movement is not implied absent. |
 | The Gobert package | Beverley’s 2021 route into Minnesota, the complete July 2022 Gobert transaction, Beverley’s Lakers move, the February 2023 three-team package and the Keyonte George selection. Later Utah pick pooling, trades and conveyances are outside this story. |
+| Kareem changes coast | The complete 1975 exchange and Bridgeman’s inclusion in the 1984 Clippers–Bucks package. Stops September 29, 1984; later trades and career milestones are not treated as trade returns. |
+| Pippen’s Dallas detour | Pippen’s three trades, Cato’s Dallas origin, the complete McGrady packages, and the Jordan Hill–Dallas first–Harden route through 2014. The early Pippen draft considerations have untraced terms; no unsupported selection is assigned. |
+| The Worm changes sides | Rodman’s 1993 and 1995 exchanges, the separate same-day Morris deal, and Elliott’s completed July 1994 return. Stops October 2, 1995. Conditional seconds and swap outcomes are untraced; the additional 1995 consideration is explicitly undisclosed. |
+| The Answer’s next questions | Both Iverson trades, Denver’s 2007 first to Cook, Cook’s Miami and Oklahoma City packages, and shared Carmelo/Harden exchanges. Stops October 27, 2012; Dallas’s 2007 first and later pick branches are untraced. |
+| T-Mac’s branching return | The complete 2004 and 2010 McGrady trades; Francis to Ariza; Hill to the Dallas first; Odom’s 2012 second and its rights return; the shared Harden package and 2014 McGary conveyance. New York’s first conveys to Royce White. The 2011 New York swap and the Odom 2013 second-round swap remain bounded, untraced branches. |
+| Harden, again. | The 2022 Philadelphia arrival, final 2023 three-team Clippers exchange, the 2025 transfer of its composite first and two separate February 2026 endpoints. Later selection, swap exercise and other outgoing-player careers are untraced. |
+| The Mitchell exchange. | Mitchell’s 2017 draft-rights arrival, Markkanen’s Chicago and Cleveland moves, the complete 2022 Cleveland–Utah exchange, Agbaji’s Toronto package and Sexton’s 2025 Charlotte trade. Utah’s later first-round pools and actual swap exercise are untraced. |
+| Fox. LaVine. The next move. | The final Fox–LaVine three-team exchange, selected prior LaVine and pick transfers, the complete Valančiūnas packages, and Chicago’s second-round conveyance as Raynaud. Charlotte’s eventual fallback and other first-round fulfillment remain untraced. |
+| Siakam’s second act. | The two separate January 2024 trades, both 2024 first-round conveyances, Ingram’s complete 2025 package, and selected Olynyk/McCollum/Branham moves through February 2026. The Indiana first’s later transfers and fulfillment are untraced. |
+| Before Miami, a fork. | Butler’s complete 2017, 2018 and 2019 trades, plus the LaVine and Markkanen branches into Fox and Mitchell packages. Butler’s own path stops at Miami in 2019; his separate 2025 Warriors story is available in the wider web. Remaining outgoing-player careers and pick resolutions are untraced. |
 
 Every story also displays its boundary in the experience. Other outgoing assets stop at their last documented transfer. This does not mean they stayed put, expired, or have no subsequent history. The archive is not a current roster or a complete asset ledger. Minor publicly undisclosed terms are labelled; they have no invented downstream branches.
 

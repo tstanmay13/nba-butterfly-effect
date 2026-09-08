@@ -34,6 +34,55 @@ void test('all published stories pass ownership checks at every timeline prefix'
       );
   }
 });
+void test('Siakam follows a separate same-day Lewis acquisition and the second stays in Indiana', () => {
+  const before = event('lewis-indiana'),
+    after = event('siakam-indiana');
+  assert.equal(before.date, after.date);
+  assert.ok(compareEvents(before, after) < 0);
+  assert.deepEqual(
+    before.moves.find((m) => m.asset === 'lewis-kira'),
+    { asset: 'lewis-kira', from: 'NOP', to: 'IND' },
+  );
+  assert.equal(after.moves.find((m) => m.asset === 'lewis-kira')?.from, 'IND');
+  assert.ok(!after.moves.some((m) => m.asset === 'w3-lewis24-second'));
+  assert.equal(
+    ownership([before, after]).get('w3-lewis24-second')?.team,
+    'IND',
+  );
+});
+void test('the same composite Harden first reaches Washington and Dallas without becoming three picks', () => {
+  const ids = ['harden-clippers', 'jackson-washington', 'davis-wizards'];
+  assert.deepEqual(
+    ids.map((id) => event(id).moves.find((m) => m.asset === 'ad26-first')?.to),
+    ['PHI', 'WAS', 'DAL'],
+  );
+  const links = linksBetween(ids.map(event));
+  assert.equal(links.filter((l) => l.assets.includes('ad26-first')).length, 2);
+  assert.ok(links.every((l) => !l.gaps.includes('ad26-first')));
+});
+void test('Odom, Hill and Harden move one Dallas obligation before its actual conveyance', () => {
+  assert.equal(archive.assets.dal13.year, 2012);
+  assert.equal(isProtected(archive.assets.dal13, 2012, 20), true);
+  assert.equal(isProtected(archive.assets.dal13, 2012, 21), false);
+  assert.deepEqual(
+    ['odom-dallas', 'hill-jordan-lakers', 'harden-houston'].map(
+      (id) => event(id).moves.find((m) => m.asset === 'dal13')?.to,
+    ),
+    ['LAL', 'HOU', 'OKC'],
+  );
+  assert.equal(archive.assets['c3-lal13-odom-swap'].round, 2);
+  assert.ok(event('mcgary-draft').conversions.some((c) => c.from === 'dal13'));
+});
+void test('undisclosed consideration is not invented cash and historical Seattle retains its name', () => {
+  const consideration = archive.assets['c3-rodman95-other'];
+  assert.equal(consideration.kind, 'consideration');
+  assert.equal(assetLabel(consideration), 'Other consideration');
+  assert.ok(
+    event('rodman-chicago').moves.some((m) => m.asset === consideration.id),
+  );
+  assert.equal(teamName(archive, 'OKC', '1987-06-22'), 'Seattle SuperSonics');
+  assert.equal(teamName(archive, 'NOP', '2011-12-14'), 'New Orleans Hornets');
+});
 void test('known ownership cannot jump franchises', () => {
   const first = event('luka-draft-trade'),
     second = structuredClone(event('luka-lakers'));
