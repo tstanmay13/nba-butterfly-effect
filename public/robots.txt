@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://butterfly.tanmay-singh.com/sitemap.xml
