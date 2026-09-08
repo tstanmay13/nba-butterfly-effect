@@ -219,7 +219,6 @@ void test('franchise names reflect the scene date', () => {
   assert.equal(teamName(d, 'CHA', '2025-01-01'), 'Charlotte Hornets');
 });
 void test('all facts in the public event graph have reviewed source references', () => {
-  assert.equal(archive.stories.length, 15);
   for (const t of archive.transactions) {
     assert.equal(t.verified, 'verified');
     assert.equal(t.reviewed, '2026-09-08');

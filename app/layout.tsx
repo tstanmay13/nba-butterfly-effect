@@ -1,15 +1,14 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import metadataCounts from '../data/metadata.json';
 export const metadata: Metadata = {
   metadataBase: new URL('https://butterfly.tanmay-singh.com'),
   title: 'NBA Butterfly Effect — Every trade has an afterlife',
-  description:
-    'What did this trade eventually become? Explore 15 iconic NBA trades through players, picks and documented connections. An interactive basketball history by Tanmay.',
+  description: `What did this trade eventually become? Explore ${metadataCounts.stories} iconic NBA trade stories through players, picks and documented connections. An interactive basketball history by Tanmay.`,
   icons: { icon: '/icon.svg' },
   openGraph: {
     title: 'NBA Butterfly Effect',
-    description:
-      'Every trade has an afterlife. Follow the players, picks and unexpected connections across 15 iconic NBA stories.',
+    description: `Every trade has an afterlife. Follow the players, picks and unexpected connections across ${metadataCounts.stories} iconic NBA stories.`,
     type: 'website',
     url: 'https://butterfly.tanmay-singh.com',
     images: [

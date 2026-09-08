@@ -29,3 +29,11 @@ This is not an exhaustive physical-device matrix or a claim of audited WCAG conf
 The built client JavaScript totals about 158 KB compressed across all chunks; CSS about 12.5 KB. The optional full-archive JSON is about 40 KB compressed. The three optimized WebP portraits total about 288 KB and have reserved dimensions. These are artifact sizes, not a network-throttled performance score.
 
 Each story states its coverage limit. This release is a curated transaction history, not a current roster, complete NBA ledger, or live pick tracker. Unknown contract details and untraced branches remain labelled. Source links may change or become unavailable independently of the deployed dataset.
+
+## Checkpoint 2: a quieter explorer
+
+The default full-archive view now opens on Luka’s neighborhood. A selected trade removes unrelated nodes and arranges direct earlier/later packages into separate wings. A visible connection navigator provides a click path without dragging. The entire network remains available through an explicit control, with search and franchise filtering.
+
+Added three regressions (29 total): exact one-hop membership and chronological wings, no future leakage into focus, and focused/entire-archive URL restoration. Visually checked desktop and 390-pixel layouts; confirmed the 83-node overview survives reload. Readable-list scrolling now permits vertical touch gestures.
+
+Checkpoint 1 was deployed successfully at https://butterfly.tanmay-singh.com with active HTTPS. Production loading, asset traversal, team perspective switching, browser back and the browser error log were checked on the live deployment. DNS comparison confirmed the three existing records were unchanged; only the Butterfly CNAME and its two specific verification TXT records were added.

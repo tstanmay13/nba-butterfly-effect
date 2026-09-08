@@ -60,7 +60,7 @@ Shared URLs encode `story`, `at`, `step`, `node`, `team`, and `mode`. `step` dis
 
 See [adding a story](research/ADDING_A_STORY.md), [research and reuse](research/METHODOLOGY.md), and [validation](research/VALIDATION.md).
 
-The **All connections** web loads the full canonical archive on demand. It supports pan/zoom, franchise filtering, player search, one-hop highlighting, a readable list, date filtering and shared URLs. Solid links track shared assets with continuous known ownership; dashed links explicitly mark intervening moves outside the curated record. See `lib/network.ts` and `tests/network.test.ts`.
+The **All connections** web loads the full canonical archive on demand. It opens on a quiet, one-hop butterfly around Luka’s draft exchange. Earlier packages sit to the left, later packages to the right, with explicit buttons to follow either direction. The complete archive is one control away. It supports pan/zoom, franchise filtering, player search, a readable list, date filtering and shared URLs. Solid links track shared assets with continuous known ownership; dashed links explicitly mark intervening moves outside the curated record. See `lib/network.ts` and `tests/network.test.ts`.
 
 ## Deployment
 

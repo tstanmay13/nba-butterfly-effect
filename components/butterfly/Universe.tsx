@@ -17,43 +17,20 @@ import {
   X,
 } from 'lucide-react';
 import type { Archive, StoryData, ViewState } from '../../lib/model';
-import { compareEvents, eventAssets, shortDate } from '../../lib/history';
+import { compareEvents, shortDate } from '../../lib/history';
 import {
   layoutNetwork,
-  neighborhood,
+  focusedNetwork,
   networkAt,
   searchNetwork,
 } from '../../lib/network';
 import { Inspector } from './Inspector';
+import {
+  readWebState,
+  webStateQuery,
+  type WebState,
+} from '../../lib/web-state';
 let archiveCache: Archive | undefined;
-interface WebState {
-  at: string;
-  node: string | null;
-  focus: string | null;
-  team: string;
-  query: string;
-}
-function readState(a: Archive): WebState {
-  const p = new URLSearchParams(location.search),
-    dates = a.transactions.map((t) => t.date).sort();
-  const at =
-    p.get('at') && /^\d{4}-\d{2}-\d{2}$/.test(p.get('at')!)
-      ? p.get('at')!
-      : dates.at(-1)!;
-  const clamped =
-    at < dates[0] ? dates[0] : at > dates.at(-1)! ? dates.at(-1)! : at;
-  const visible = a.transactions.filter((t) => t.date <= clamped),
-    available = new Set(visible.flatMap((t) => [t.id, ...eventAssets(t)]));
-  const node = p.get('node');
-  const focus = p.get('focus');
-  return {
-    at: clamped,
-    node: node && available.has(node) ? node : null,
-    focus: focus && visible.some((t) => t.id === focus) ? focus : null,
-    team: a.teams[p.get('franchise') || ''] ? p.get('franchise')! : 'ALL',
-    query: p.get('q') || '',
-  };
-}
 export default function Universe({
   onClose,
   onStory,
@@ -63,7 +40,7 @@ export default function Universe({
 }) {
   const [archive, setArchive] = useState<Archive | undefined>(archiveCache),
     [state, setState] = useState<WebState | null>(
-      archiveCache ? () => readState(archiveCache!) : null,
+      archiveCache ? () => readWebState(location.search, archiveCache!) : null,
     ),
     [error, setError] = useState(''),
     [list, setList] = useState(false),
@@ -87,7 +64,7 @@ export default function Universe({
         .then((a) => {
           archiveCache = a;
           setArchive(a);
-          setState(readState(a));
+          setState(readWebState(location.search, a));
         })
         .catch((e) => {
           if (e.name !== 'AbortError')
@@ -99,7 +76,7 @@ export default function Universe({
   }, []);
   useEffect(() => {
     const onPop = () => {
-      if (archiveCache) setState(readState(archiveCache));
+      if (archiveCache) setState(readWebState(location.search, archiveCache));
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
@@ -108,6 +85,27 @@ export default function Universe({
     () => (archive ? layoutNetwork(archive) : null),
     [archive],
   );
+  const display = useMemo(() => {
+    if (!archive || !layout || !state) return null;
+    const visible = networkAt(layout, state.at);
+    if (state.focus) return focusedNetwork(visible, state.focus);
+    const matches = searchNetwork(
+      archive,
+      visible.nodes.map((n) => n.event),
+      state.query,
+    );
+    const nodes = visible.nodes.filter(
+      (n) =>
+        matches.has(n.id) &&
+        (state.team === 'ALL' || n.event.teams.includes(state.team)),
+    );
+    const ids = new Set(nodes.map((n) => n.id));
+    return {
+      ...visible,
+      nodes,
+      links: visible.links.filter((l) => ids.has(l.from) && ids.has(l.to)),
+    };
+  }, [archive, layout, state]);
   const draw = useCallback(() => {
     if (world.current) {
       const t = transform.current;
@@ -129,8 +127,8 @@ export default function Universe({
     [draw],
   );
   const fit = useCallback(() => {
-    if (!layout || !state) return;
-    const nodes = layout.nodes.filter((n) => n.event.date <= state.at);
+    if (!display) return;
+    const nodes = display.nodes;
     if (!nodes.length) return;
     const minX = Math.min(...nodes.map((n) => n.x)) - 140,
       maxX = Math.max(...nodes.map((n) => n.x)) + 140,
@@ -146,26 +144,26 @@ export default function Universe({
           Math.min(0.85, box.width / (maxX - minX), box.height / (maxY - minY)),
         ),
       );
-  }, [layout, state, centerOn]);
+  }, [display, centerOn]);
   useEffect(() => {
-    if (!layout || !state || !canvas.current) return;
+    if (!display || !state || !canvas.current) return;
     const resize = () => {
-      const node = layout.nodes.find((n) => n.id === state.focus);
-      if (node) centerOn(node.x, node.y, 0.95);
+      const node = display.nodes.find((n) => n.id === state.focus);
+      if (node && canvas.current!.clientWidth < 600)
+        centerOn(node.x, node.y, 0.85);
       else fit();
     };
     const observer = new ResizeObserver(resize);
     observer.observe(canvas.current);
     return () => observer.disconnect();
-  }, [layout, state, centerOn, fit]);
+  }, [display, state, centerOn, fit, list]);
   const update = (next: WebState, replace = false) => {
     setState(next);
-    const p = new URLSearchParams({ view: 'web', at: next.at });
-    if (next.node) p.set('node', next.node);
-    if (next.focus) p.set('focus', next.focus);
-    if (next.team !== 'ALL') p.set('franchise', next.team);
-    if (next.query) p.set('q', next.query);
-    history[replace ? 'replaceState' : 'pushState'](null, '', `?${p}`);
+    history[replace ? 'replaceState' : 'pushState'](
+      null,
+      '',
+      webStateQuery(next),
+    );
   };
   function select(id: string) {
     if (!state || !layout) return;
@@ -175,8 +173,9 @@ export default function Universe({
       node: id,
       focus: isEvent ? id : state.focus,
       query: '',
+      team: 'ALL',
     });
-    if (isEvent) centerOn(isEvent.x, isEvent.y, 0.95);
+    setList(false);
   }
   function changeZoom(delta: number) {
     const box = canvas.current?.getBoundingClientRect();
@@ -197,7 +196,7 @@ export default function Universe({
       setFallback(location.href);
     }
   }
-  if (!archive || !state || !layout)
+  if (!archive || !state || !layout || !display)
     return (
       <div className="web-loading">
         <GitBranch size={30} />
@@ -212,11 +211,10 @@ export default function Universe({
       dates.findLastIndex((d) => d <= state.at),
     );
   const search = searchNetwork(
-      archive,
-      visible.nodes.map((n) => n.event),
-      state.query,
-    ),
-    near = neighborhood(visible, state.focus, 1);
+    archive,
+    visible.nodes.map((n) => n.event),
+    state.query,
+  );
   const matches = new Set(
     visible.nodes
       .filter(
@@ -317,6 +315,23 @@ export default function Universe({
           <ChevronDown size={14} />
         </label>
         <button
+          className="web-overview-toggle"
+          aria-label="Entire archive"
+          aria-pressed={!state.focus}
+          onClick={() =>
+            update({
+              ...state,
+              focus: null,
+              node: null,
+              query: '',
+              team: 'ALL',
+            })
+          }
+        >
+          <GitBranch size={15} />
+          <span>Entire archive</span>
+        </button>
+        <button
           className={`web-list-toggle ${list ? 'active' : ''}`}
           onClick={() => setList(!list)}
           aria-pressed={list}
@@ -328,10 +343,11 @@ export default function Universe({
       <div className="web-main">
         <div className="web-canvas-area">
           <div
-            className="web-canvas"
+            className={`web-canvas ${list ? 'is-list' : ''}`}
             ref={canvas}
             data-testid="connection-web"
             onPointerDown={(e) => {
+              if (list) return;
               if ((e.target as HTMLElement).closest('button,a,input,select'))
                 return;
               drag.current = {
@@ -377,19 +393,23 @@ export default function Universe({
               </div>
             ) : (
               <>
-                <div className="web-watermark" aria-hidden="true">
+                <div
+                  className="web-watermark"
+                  aria-hidden="true"
+                  hidden={!!state.focus}
+                >
                   FOLLOW
                   <br />
                   THE THREADS.
                 </div>
                 <div
                   ref={world}
-                  className="web-world"
-                  style={{ width: layout.width, height: layout.height }}
+                  className={`web-world ${state.focus ? 'is-focused' : ''}`}
+                  style={{ width: display.width, height: display.height }}
                 >
                   <svg
-                    width={layout.width}
-                    height={layout.height}
+                    width={display.width}
+                    height={display.height}
                     className="web-edges"
                     aria-hidden="true"
                   >
@@ -411,9 +431,9 @@ export default function Universe({
                         />
                       </marker>
                     </defs>
-                    {visible.links.map((l) => {
-                      const a = layout.nodes.find((n) => n.id === l.from)!,
-                        b = layout.nodes.find((n) => n.id === l.to)!;
+                    {display.links.map((l) => {
+                      const a = display.nodes.find((n) => n.id === l.from)!,
+                        b = display.nodes.find((n) => n.id === l.to)!;
                       const active =
                         state.focus &&
                         (l.from === state.focus || l.to === state.focus);
@@ -424,7 +444,7 @@ export default function Universe({
                       return (
                         <g
                           key={`${l.from}-${l.to}`}
-                          opacity={dim ? 0.08 : active ? 1 : 0.65}
+                          opacity={dim ? 0.08 : active ? 1 : 0.3}
                         >
                           <path
                             d={`M ${a.x + 105} ${a.y} C ${bend} ${a.y}, ${bend} ${b.y}, ${b.x - 105} ${b.y}`}
@@ -450,7 +470,7 @@ export default function Universe({
                                 y={(a.y + b.y) / 2 + 3}
                                 textAnchor="middle"
                                 fill="#f8be99"
-                                fontSize="10"
+                                fontSize="12"
                               >
                                 {l.gaps.length
                                   ? 'Shared asset · route has a gap'
@@ -464,9 +484,7 @@ export default function Universe({
                       );
                     })}
                   </svg>
-                  {visible.nodes.map((n) => {
-                    const dim =
-                      !matches.has(n.id) || (!!state.focus && !near.has(n.id));
+                  {display.nodes.map((n) => {
                     const color =
                       archive.teams[
                         n.event.teams.includes('DAL') ? 'DAL' : n.event.teams[0]
@@ -474,15 +492,19 @@ export default function Universe({
                     return (
                       <button
                         key={n.id}
-                        className={`web-node ${n.id === state.focus ? 'focused' : ''} ${dim ? 'dim' : ''}`}
+                        className={`web-node ${n.id === state.focus ? 'focused' : ''}`}
                         style={
                           {
-                            left: n.x - 105,
-                            top: n.y - 39,
+                            left: n.x - (state.focus ? 120 : 105),
+                            top: n.y - (state.focus ? 48 : 39),
                             '--node-color': color,
                           } as React.CSSProperties
                         }
                         onClick={() => select(n.id)}
+                        onFocus={(e) => {
+                          if (e.currentTarget.matches(':focus-visible'))
+                            centerOn(n.x, n.y, 0.95);
+                        }}
                         aria-label={`Inspect ${n.event.shortTitle}, ${shortDate(n.event.date)}`}
                       >
                         <span className="web-node-year">
@@ -524,8 +546,8 @@ export default function Universe({
               <div className="web-hint">
                 <strong>A whole archive, one web.</strong>
                 <span>
-                  Tap a trade to light up its connections. Drag to roam, or
-                  search for a player.
+                  This is the whole archive. Select one deal to unfold a clear
+                  view of its earlier and later connections.
                 </span>
                 <small>
                   Every node is a complete package. Arrows follow shared assets
@@ -548,7 +570,6 @@ export default function Universe({
                   <button
                     key={n.id}
                     onClick={() => {
-                      centerOn(n.x, n.y, 1);
                       select(n.id);
                     }}
                   >
@@ -571,15 +592,70 @@ export default function Universe({
                 <span>{focused?.shortTitle}</span>
                 <button
                   onClick={() => {
-                    update({ ...state, focus: null, node: null });
-                    fit();
+                    select(focused!.id);
                   }}
                 >
-                  <X size={13} /> Clear focus
+                  <ArrowUpRight size={13} /> Read deal
                 </button>
               </div>
             )}
           </div>
+          {focused && !list && (
+            <nav
+              className="web-neighbors"
+              aria-label="Follow connected transactions"
+            >
+              {(['before', 'after'] as const).map((direction) => {
+                const edges = display.links.filter((l) =>
+                  direction === 'before'
+                    ? l.to === focused.id
+                    : l.from === focused.id,
+                );
+                return (
+                  <div key={direction}>
+                    <span className="micro">
+                      {direction === 'before'
+                        ? '← WHERE IT CAME FROM'
+                        : 'WHAT HAPPENED NEXT →'}
+                    </span>
+                    <div className="web-neighbor-options">
+                      {edges.map((l) => {
+                        const id = direction === 'before' ? l.from : l.to;
+                        const event = archive.transactions.find(
+                          (t) => t.id === id,
+                        )!;
+                        return (
+                          <button key={id} onClick={() => select(id)}>
+                            <small>
+                              {shortDate(event.date)} ·{' '}
+                              {l.gaps.length
+                                ? 'Intervening moves untraced'
+                                : l.assets
+                                    .slice(0, 2)
+                                    .map((a) => archive.assets[a].name)
+                                    .join(' + ')}
+                              {l.assets.length > 2
+                                ? ` + ${l.assets.length - 2} more`
+                                : ''}
+                            </small>
+                            <strong>{event.shortTitle}</strong>
+                            <ArrowUpRight size={14} />
+                          </button>
+                        );
+                      })}
+                      {!edges.length && (
+                        <p>
+                          {direction === 'before'
+                            ? 'This branch begins here.'
+                            : 'No later connection in the revealed history.'}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </nav>
+          )}
           {!!relatedStories.length && (
             <div className="web-story-bridges">
               <span>EXPLORE THIS IN A STORY</span>
@@ -602,7 +678,6 @@ export default function Universe({
             onEvent={(id) => {
               const n = layout.nodes.find((n) => n.id === id)!;
               update({ ...state, at: n.event.date, node: id, focus: id });
-              centerOn(n.x, n.y, 0.95);
             }}
           />
         )}

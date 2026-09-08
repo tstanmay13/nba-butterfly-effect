@@ -123,6 +123,50 @@ export function networkAt(layout: NetworkLayout, date: string) {
     links: layout.links.filter((l) => ids.has(l.from) && ids.has(l.to)),
   };
 }
+/** A readable butterfly around one complete package: earlier left, later right.
+ * Only direct shared-asset edges are drawn; neighbors are never connected by
+ * proximity or by being in the same story.
+ */
+export function focusedNetwork(
+  layout: NetworkLayout,
+  focus: string,
+): NetworkLayout {
+  const center = layout.nodes.find((n) => n.id === focus);
+  if (!center) return { ...layout, nodes: [], links: [] };
+  const links = layout.links.filter((l) => l.from === focus || l.to === focus);
+  const beforeIds = new Set(
+    links.filter((l) => l.to === focus).map((l) => l.from),
+  );
+  const afterIds = new Set(
+    links.filter((l) => l.from === focus).map((l) => l.to),
+  );
+  const before = layout.nodes
+    .filter((n) => beforeIds.has(n.id))
+    .sort((a, b) => compareEvents(a.event, b.event));
+  const after = layout.nodes
+    .filter((n) => afterIds.has(n.id))
+    .sort((a, b) => compareEvents(a.event, b.event));
+  const height = Math.max(
+    480,
+    Math.max(before.length, after.length) * 150 + 150,
+  );
+  const wing = (nodes: NetworkNode[], x: number) =>
+    nodes.map((n, i) => ({
+      ...n,
+      x,
+      y: height / 2 + (i - (nodes.length - 1) / 2) * 120,
+    }));
+  return {
+    width: 1320,
+    height,
+    nodes: [
+      ...wing(before, 150),
+      { ...center, x: 660, y: height / 2 },
+      ...wing(after, 1170),
+    ],
+    links,
+  };
+}
 export function searchNetwork(
   archive: Archive,
   events: Transaction[],

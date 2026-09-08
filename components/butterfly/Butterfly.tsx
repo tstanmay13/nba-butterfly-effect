@@ -279,7 +279,7 @@ export default function Butterfly() {
           <button className="archive-nav" onClick={() => setOverlay('archive')}>
             <Grid2X2 size={15} />
             <span>THE ARCHIVE</span>
-            <small>15</small>
+            <small>{catalog.length}</small>
           </button>
           <button className="about-nav" onClick={() => setOverlay('about')}>
             ABOUT
@@ -659,7 +659,7 @@ export default function Butterfly() {
               ANOTHER THREAD.
             </h2>
             <button onClick={() => setOverlay('archive')}>
-              Explore all 15 stories <ArrowUpRight size={17} />
+              Explore all {catalog.length} stories <ArrowUpRight size={17} />
             </button>
           </div>
           <div className="more-links">

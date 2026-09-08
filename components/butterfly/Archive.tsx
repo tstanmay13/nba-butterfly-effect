@@ -63,7 +63,7 @@ export function Overlay({
                 <span>HAS AN AFTERLIFE.</span>
               </h2>
               <p>
-                15 doors into basketball history.
+                {stories.length} doors into basketball history.
                 <br />
                 Pick a deal. Follow what moved.
               </p>
@@ -77,7 +77,7 @@ export function Overlay({
                     onClick={() => setFilter(f)}
                   >
                     {f}
-                    {f === 'All' && <small>15</small>}
+                    {f === 'All' && <small>{stories.length}</small>}
                   </button>
                 ))}
               </div>

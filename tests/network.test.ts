@@ -1,9 +1,11 @@
+import { readWebState, webStateQuery } from '../lib/web-state';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import type { Archive } from '../lib/model';
 import {
   layoutNetwork,
+  focusedNetwork,
   neighborhood,
   networkAt,
   searchNetwork,
@@ -70,4 +72,63 @@ void test('unknown intervening ownership is marked as a gap instead of a false d
     l.assets.includes('luka'),
   );
   assert.deepEqual(link?.gaps, ['luka']);
+});
+void test('focused butterfly shows only the selected package and directly connected neighbors', () => {
+  const web = focusedNetwork(layout, 'luka-draft-trade');
+  assert.deepEqual(
+    new Set(web.nodes.map((n) => n.id)),
+    neighborhood(layout, 'luka-draft-trade'),
+  );
+  assert.ok(
+    web.links.every(
+      (l) => l.from === 'luka-draft-trade' || l.to === 'luka-draft-trade',
+    ),
+  );
+  const center = web.nodes.find((n) => n.id === 'luka-draft-trade')!;
+  for (const l of web.links) {
+    const before = web.nodes.find((n) => n.id === l.from)!;
+    const after = web.nodes.find((n) => n.id === l.to)!;
+    assert.ok(before.x < after.x);
+    assert.ok(before.event.date <= after.event.date);
+  }
+  assert.ok(center);
+  assert.equal(
+    new Set(web.nodes.map((n) => `${n.x},${n.y}`)).size,
+    web.nodes.length,
+  );
+});
+void test('focused view cannot recover connections hidden by the archive date', () => {
+  const web = focusedNetwork(
+    networkAt(layout, '2018-06-21'),
+    'luka-draft-trade',
+  );
+  assert.equal(web.nodes.length, 1);
+  assert.equal(web.links.length, 0);
+  assert.equal(
+    focusedNetwork(networkAt(layout, '1996-01-01'), 'luka-draft-trade').nodes
+      .length,
+    0,
+  );
+});
+void test('web URLs preserve focused and entire-archive modes on reload', () => {
+  const initial = readWebState('?view=web', archive);
+  assert.equal(initial.focus, 'luka-draft-trade');
+  assert.equal(initial.node, null);
+  const focused = {
+    ...initial,
+    focus: 'luka-lakers',
+    node: 'luka',
+    team: 'DAL',
+    query: '',
+  };
+  assert.deepEqual(readWebState(webStateQuery(focused), archive), focused);
+  const overview = { ...initial, focus: null, node: null, query: 'Morris' };
+  assert.deepEqual(readWebState(webStateQuery(overview), archive), overview);
+  assert.equal(readWebState('?view=web&scope=all', archive).focus, null);
+  const past = readWebState(
+    '?view=web&at=1996-06-26&focus=luka-lakers&node=luka',
+    archive,
+  );
+  assert.equal(past.focus, null);
+  assert.equal(past.node, null);
 });
