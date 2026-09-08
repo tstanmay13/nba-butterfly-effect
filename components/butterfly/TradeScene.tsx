@@ -45,7 +45,7 @@ export function AssetNode({
       className={`asset-node ${asset.kind} ${selected ? 'selected' : ''}`}
       style={{ '--team-color': data.teams[team]?.color } as React.CSSProperties}
       onClick={() => onSelect(asset.id)}
-      aria-label={`Inspect ${asset.name}${form === 'rights' ? ', draft rights' : ''}`}
+      aria-label={`Inspect ${asset.name}${form === 'rights' ? ', draft rights' : form === 'player-rights' ? ', player rights' : ''}`}
       aria-pressed={!!selected}
       data-asset={asset.id}
     >

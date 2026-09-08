@@ -4,6 +4,7 @@ import { ArrowUpRight, Search, X, BookOpen } from 'lucide-react';
 import type { Story } from '../../lib/model';
 import credits from '../../data/image-credits.json';
 import metadata from '../../data/metadata.json';
+import { searchStories } from '../../lib/search';
 export function Overlay({
   kind,
   stories,
@@ -26,13 +27,7 @@ export function Overlay({
       document.body.style.overflow = prev;
     };
   }, []);
-  const matches = stories.filter(
-    (s) =>
-      (filter === 'All' || s.category === filter) &&
-      `${s.title} ${s.headline} ${s.subtitle} ${s.year} ${s.coverage}`
-        .toLowerCase()
-        .includes(query.toLowerCase()),
-  );
+  const matches = searchStories(stories, query, filter);
   return (
     <dialog
       ref={dialog}

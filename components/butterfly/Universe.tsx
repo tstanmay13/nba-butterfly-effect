@@ -171,6 +171,10 @@ export default function Universe({
     update({
       ...state,
       node: id,
+      at:
+        isEvent && isEvent.event.date > state.at
+          ? isEvent.event.date
+          : state.at,
       focus: isEvent ? id : state.focus,
       query: '',
       team: 'ALL',
@@ -185,6 +189,15 @@ export default function Universe({
     const x = (box.width / 2 - tr.x) / tr.scale,
       y = (box.height / 2 - tr.y) / tr.scale;
     centerOn(x, y, s);
+  }
+  function changeDate(at: string) {
+    if (!state || !archive) return;
+    const focus =
+      state.focus &&
+      archive.transactions.some((t) => t.id === state.focus && t.date <= at)
+        ? state.focus
+        : null;
+    update({ ...state, at, node: null, focus }, true);
   }
   async function share() {
     if (state) update(state, true);
@@ -557,7 +570,10 @@ export default function Universe({
                   className="web-start"
                   onClick={() => select('luka-draft-trade')}
                 >
-                  Start with Luka <ArrowRight size={14} />
+                  {state.at < '2018-06-21'
+                    ? 'Jump to Luka · 2018'
+                    : 'Start with Luka'}{' '}
+                  <ArrowRight size={14} />
                 </button>
               </div>
             )}
@@ -694,12 +710,7 @@ export default function Universe({
           className="icon-button"
           aria-label="Earlier date"
           disabled={dateIndex === 0}
-          onClick={() =>
-            update(
-              { ...state, at: dates[dateIndex - 1], node: null, focus: null },
-              true,
-            )
-          }
+          onClick={() => changeDate(dates[dateIndex - 1])}
         >
           <ArrowLeft size={17} />
         </button>
@@ -710,34 +721,23 @@ export default function Universe({
           min="0"
           max={dates.length - 1}
           value={dateIndex}
-          onChange={(e) =>
-            update(
-              {
-                ...state,
-                at: dates[Number(e.target.value)],
-                node: null,
-                focus: null,
-              },
-              true,
-            )
-          }
+          onChange={(e) => changeDate(dates[Number(e.target.value)])}
         />
         <button
           className="icon-button"
           aria-label="Later date"
           disabled={dateIndex === dates.length - 1}
-          onClick={() =>
-            update(
-              { ...state, at: dates[dateIndex + 1], node: null, focus: null },
-              true,
-            )
-          }
+          onClick={() => changeDate(dates[dateIndex + 1])}
         >
           <ArrowRight size={17} />
         </button>
       </section>
       {fallback && (
-        <dialog open className="share-fallback">
+        <dialog
+          open
+          className="share-fallback"
+          aria-label="Share this connection"
+        >
           <button
             className="icon-button"
             onClick={() => setFallback('')}

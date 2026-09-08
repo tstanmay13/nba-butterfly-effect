@@ -357,7 +357,10 @@ export default function Butterfly() {
                     / {data.story.category.toUpperCase()}
                   </span>
                   <h1 id="story-title">
-                    {(root ? data.story.headline : t.title.toUpperCase())
+                    {(root
+                      ? data.story.headline.toUpperCase()
+                      : t.title.toUpperCase()
+                    )
                       .split('\n')
                       .map((line, i) => (
                         <span key={i}>{line}</span>

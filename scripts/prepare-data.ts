@@ -72,7 +72,26 @@ writeFileSync(
     reviewed: a.reviewed,
   }) + '\n',
 );
-writeFileSync('data/catalog.json', JSON.stringify(a.stories, null, 2) + '\n');
+const catalog = a.stories.map((story) => {
+  const events = a.transactions.filter((t) =>
+    story.transactions.includes(t.id),
+  );
+  const assets = new Set(events.flatMap((t) => [...eventAssets(t)]));
+  const teams = new Set(events.flatMap((t) => t.teams));
+  const searchText = [...assets]
+    .map((id) => a.assets[id].name)
+    .concat(
+      [...teams].flatMap((id) => [
+        id,
+        a.teams[id].name,
+        ...(a.teams[id].aliases || []).map((x) => x.name),
+      ]),
+      events.map((t) => t.date.slice(0, 4)),
+    )
+    .join(' ');
+  return { ...story, searchText };
+});
+writeFileSync('data/catalog.json', JSON.stringify(catalog, null, 2) + '\n');
 console.log(
   `Verified and published ${a.stories.length} story files / ${a.transactions.length} canonical events.`,
 );

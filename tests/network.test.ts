@@ -1,3 +1,4 @@
+import { searchStories } from '../lib/search';
 import { readWebState, webStateQuery } from '../lib/web-state';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -131,4 +132,31 @@ void test('web URLs preserve focused and entire-archive modes on reload', () => 
   );
   assert.equal(past.focus, null);
   assert.equal(past.node, null);
+});
+void test('player search accepts unaccented names and franchise abbreviations', () => {
+  assert.ok(
+    searchNetwork(archive, archive.transactions, 'Doncic').has('luka-lakers'),
+  );
+  assert.ok(
+    searchNetwork(archive, archive.transactions, 'LAL').has('luka-lakers'),
+  );
+  assert.ok(
+    searchNetwork(archive, archive.transactions, 'Vasquez').has(
+      'vasquez-milwaukee',
+    ),
+  );
+});
+void test('archive discovery indexes actual players behind editorial titles', () => {
+  const catalog = JSON.parse(readFileSync('data/catalog.json', 'utf8'));
+  assert.ok(
+    searchStories(catalog, 'Carmelo Anthony').some((s) => s.id === 'carmelo'),
+  );
+  assert.ok(
+    searchStories(catalog, 'Doncic', 'Dallas').some((s) => s.id === 'luka'),
+  );
+  assert.ok(
+    searchStories(catalog, 'New Jersey', 'Classic').some(
+      (s) => s.id === 'carter',
+    ),
+  );
 });

@@ -5,7 +5,7 @@
 Production: https://butterfly.tanmay-singh.com  
 Repository: https://github.com/tstanmay13/nba-butterfly-effect
 
-15 stories, 83 unique events, prepared locally from cited records. No account, runtime scraping, analytics, external fonts, or paid data service. This repository and hosting project are separate from Tanmay’s personal site.
+25 stories, 132 unique events, prepared locally from cited records. No account, runtime scraping, analytics, external fonts, or paid data service. This repository and hosting project are separate from Tanmay’s personal site.
 
 ## Run and verify
 
@@ -41,6 +41,16 @@ The build is a static export in `dist/client`. `npm run prepare-data` regenerate
 | Four days in Portland | Includes Brogdon’s 2022 Boston arrival as backward context for the 2023 Holiday package, then Lillard’s three-team trade, Holiday to Boston and the July 7, 2025 Simons exchange. Future draft rights and other player branches are untraced. |
 | A new center of gravity | The complete October 2, 2024 three-team trade and Detroit’s first conveying to Minnesota as No. 17 in 2025. Other players and second-round outcomes are untraced. |
 | Five teams, one headline | The final February 6 five-team package and the Golden State first becoming Miami’s No. 20. Some minor second-round terms were undisclosed; those assets are labelled and left untraced. |
+| The Kidd round trip | Kidd’s three trades, the Cassell branch, two verified Dallas/Phoenix pick conveyances and Ryan Anderson’s Orlando exchange. Stops with Carter’s 2010 Phoenix package; later free agency and other pick branches are untraced. |
+| Vince changes the picture | Three Carter trades, Joey Graham’s Philadelphia-origin pick and the Dallas origin of Ryan Anderson’s selection. Stops in December 2010; remaining picks and subsequent free-agent signings are untraced. |
+| The clause that kept going | The final 2011 package, selected 2012/2016/2018 pick outcomes, Anthony’s 2017/2018 trades, and Poeltl’s existing route through the 2024 draft. Other players, seconds, the 2014 first and the protected OKC 2022 obligation are not followed after their displayed transfers. |
+| Barkley’s Dallas connection | Both Barkley trades, Cassell’s Phoenix–Dallas–New Jersey route, the Kidd exchange and the Phoenix second’s 1998 conveyance. Stops at Kidd’s 2001 New Jersey arrival; Horry and other received assets remain bounded branches. |
+| The original giant moves | Only the complete 1965 and 1968 Chamberlain packages. Cash is included without invented amounts. Earlier franchise relocation and subsequent player transactions are outside the selected route. |
+| The Chris Paul trail | Paul’s completed 2011, 2017, 2019, 2020 and two 2023 trades; selected Rivers, Topić, Peavy, Poole and draft-asset branches through February 2026. Paul’s later free agency and untraced draft outcomes are excluded. |
+| The other side of Lob City | Two traced branches of the 2017 Paul package: the Houston first through Spellman and the Russell–Wiggins exchange; Beverley through Minnesota and the Gobert package. Stops at the 2023 draft. Other players and subsequent moves are outside the route. |
+| The Westbrook exchange | The 2019 exchange, Westbrook’s 2020 Washington move, Topić’s 2024 selection and Paul-return branches through February 2026. Westbrook’s Lakers arrival and subsequent career are outside this route. Original future-pick terms are recorded; untraced outcomes are not current holdings. |
+| What Durant left behind | Durant’s 2019 sign-and-trade and 2023 Phoenix package; selected Russell, Wiggins, Kuminga and Cameron Johnson branches through July 2025. Durant’s 2025 Houston deal, the Bridges branch and remaining pick outcomes are not traced. Later player movement is not implied absent. |
+| The Gobert package | Beverley’s 2021 route into Minnesota, the complete July 2022 Gobert transaction, Beverley’s Lakers move, the February 2023 three-team package and the Keyonte George selection. Later Utah pick pooling, trades and conveyances are outside this story. |
 
 Every story also displays its boundary in the experience. Other outgoing assets stop at their last documented transfer. This does not mean they stayed put, expired, or have no subsequent history. The archive is not a current roster or a complete asset ledger. Minor publicly undisclosed terms are labelled; they have no invented downstream branches.
 
@@ -60,7 +70,7 @@ Shared URLs encode `story`, `at`, `step`, `node`, `team`, and `mode`. `step` dis
 
 See [adding a story](research/ADDING_A_STORY.md), [research and reuse](research/METHODOLOGY.md), and [validation](research/VALIDATION.md).
 
-The **All connections** web loads the full canonical archive on demand. It opens on a quiet, one-hop butterfly around Luka’s draft exchange. Earlier packages sit to the left, later packages to the right, with explicit buttons to follow either direction. The complete archive is one control away. It supports pan/zoom, franchise filtering, player search, a readable list, date filtering and shared URLs. Solid links track shared assets with continuous known ownership; dashed links explicitly mark intervening moves outside the curated record. See `lib/network.ts` and `tests/network.test.ts`.
+The **All connections** web loads the full canonical archive on demand. It opens on a quiet, one-hop butterfly around Luka’s draft exchange. Earlier packages sit to the left, later packages to the right, with explicit buttons to follow either direction. The complete archive is one control away. It supports pan/zoom, franchise filtering, accent-insensitive player search, a readable list, date filtering and shared URLs. Solid links track shared assets with continuous known ownership; dashed links explicitly mark intervening moves outside the curated record. See `lib/network.ts` and `tests/network.test.ts`.
 
 ## Deployment
 

@@ -260,7 +260,9 @@ export function assetLabel(asset: Asset, form?: string) {
   return asset.kind === 'player'
     ? form === 'rights'
       ? 'Draft rights'
-      : 'Player'
+      : form === 'player-rights'
+        ? 'Player rights'
+        : 'Player'
     : {
         obligation: 'Future pick',
         pick: 'Draft selection',

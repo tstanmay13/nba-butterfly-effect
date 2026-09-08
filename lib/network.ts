@@ -1,5 +1,6 @@
 import type { Archive, Transaction } from './model';
 import { compareEvents, eventAssets, linksBetween } from './history';
+import { normalizeSearch } from './search';
 export interface NetworkNode {
   id: string;
   x: number;
@@ -147,8 +148,8 @@ export function focusedNetwork(
     .filter((n) => afterIds.has(n.id))
     .sort((a, b) => compareEvents(a.event, b.event));
   const height = Math.max(
-    480,
-    Math.max(before.length, after.length) * 150 + 150,
+    360,
+    Math.max(before.length, after.length) * 120 + 140,
   );
   const wing = (nodes: NetworkNode[], x: number) =>
     nodes.map((n, i) => ({
@@ -172,14 +173,14 @@ export function searchNetwork(
   events: Transaction[],
   query: string,
 ) {
-  const needle = query.trim().toLocaleLowerCase();
+  const needle = normalizeSearch(query);
   if (!needle) return new Set(events.map((t) => t.id));
   return new Set(
     events
       .filter((t) =>
-        `${t.title} ${t.shortTitle} ${t.date} ${t.teams.map((id) => archive.teams[id].name).join(' ')} ${[...eventAssets(t)].map((id) => archive.assets[id].name).join(' ')}`
-          .toLocaleLowerCase()
-          .includes(needle),
+        normalizeSearch(
+          `${t.title} ${t.shortTitle} ${t.date} ${t.teams.join(' ')} ${t.teams.map((id) => archive.teams[id].name).join(' ')} ${[...eventAssets(t)].map((id) => archive.assets[id].name).join(' ')}`,
+        ).includes(needle),
       )
       .map((t) => t.id),
   );

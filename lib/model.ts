@@ -45,7 +45,7 @@ export interface Movement {
   asset: string;
   from: TeamId;
   to: TeamId;
-  form?: 'rights' | 'player';
+  form?: 'rights' | 'player' | 'player-rights';
   note?: string;
 }
 export interface Conversion {
@@ -77,6 +77,7 @@ export interface Transaction {
   reviewed: string;
 }
 export interface Story {
+  searchText?: string;
   id: string;
   title: string;
   headline: string;

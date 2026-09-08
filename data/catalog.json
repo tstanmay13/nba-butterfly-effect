@@ -27,7 +27,8 @@
     "coverage": "Traces Luka, Trae and the Dallas first through Reddish; the Reddish–Hart exchange joins the 2019 Davis branch. Follows New York’s first to Kris Murray and McCollum into Washington’s 2026 Trae exchange. Stops February 5, 2026. Other pick rights and secondary player branches are untraced.",
     "takeaway": "The draft-night package opens several paths. Follow one asset at a time.",
     "image": "luka-doncic",
-    "imageAlt": "Luka Dončić playing for Dallas in 2021"
+    "imageAlt": "Luka Dončić playing for Dallas in 2021",
+    "searchText": "Luka Dončić Trae Young Dallas future first 2019 No. 10 Cam Reddish Anthony Davis Lonzo Ball Josh Hart Brandon Ingram Lakers 2021/22 first 2023 LAL swap right Lakers 2024/25 first Cash considerations De’Andre Hunter Isaac Bonga Jemerrio Jones Moritz Wagner Lakers 2022 second Cash considerations Solomon Hill Brooklyn 2025 second Cash considerations Kevin Knox II Charlotte protected first CJ McCollum Larry Nance Jr. Tony Snell Nickeil Alexander-Walker Didi Louzada Tomáš Satoranský New Orleans conditional first 2026 most-favorable second New Orleans 2027 second Bojan Dubljević Dani Diez Ryan Arcidiacono New York 2023 first Ante Tomić Svi Mykhailiuk Matisse Thybulle Jalen McDaniels New York 2024 second Portland 2029 second 2023 most-favorable second 2027 most-favorable second 2023 No. 23 Kris Murray Maxi Kleber Markieff Morris Max Christie Lakers 2029 first Jalen Hood-Schifino Clippers 2025 second Dallas 2025 second Cash considerations Cash considerations Kelly Olynyk CHI 2027 second Jordan Poole Saddiq Bey Micah Peavy Cam Whitmore Chicago 2026 second Sacramento 2029 second Mojave King Corey Kispert Jaden Hardy D’Angelo Russell Dante Exum Khris Middleton AJ Johnson Marvin Bagley III 2026 least-favorable first Warriors 2030 first PHX 2026 second HOU 2029 second Malaki Branham Tyus Jones DAL Dallas Mavericks ATL Atlanta Hawks LAL Los Angeles Lakers NOP New Orleans Pelicans New Orleans Hornets WAS Washington Wizards NYK New York Knicks POR Portland Trail Blazers PHI Philadelphia 76ers CHA Charlotte Hornets Charlotte Hornets Charlotte Bobcats UTA Utah Jazz HOU Houston Rockets 2018 2019 2019 2022 2022 2023 2023 2025 2025 2026 2026"
   },
   {
     "id": "dirk",
@@ -54,7 +55,8 @@
     "coverage": "Follows the separate Dirk and Nash draft-night packages, Dallas’s 1999 first to Marion, and Marion through Miami and Toronto back to Dallas in July 2009. Shaq’s Miami, Phoenix and Cleveland exchanges are shared intersections. Conditional Toronto picks and other branches stop at their recorded transfers; Nash’s free agency is not a trade return.",
     "takeaway": "Pat Garrity’s rights connect the two deals. Each package still matters.",
     "image": "dirk-nowitzki",
-    "imageAlt": "Dirk Nowitzki playing for Dallas in 2009"
+    "imageAlt": "Dirk Nowitzki playing for Dallas in 2009",
+    "searchText": "Robert Traylor Dirk Nowitzki Pat Garrity Martin Müürsepp Bubba Wells Dallas 1999 first Steve Nash 1999 No. 9 Shawn Marion Shaquille O’Neal Caron Butler Brian Grant Lamar Odom Miami future first Miami 2007 second Marcus Banks Cash considerations Jermaine O’Neal Jamario Moon Toronto conditional first Toronto conditional 2010 second Ben Wallace Sasha Pavlović Cleveland 2010 second Cash considerations Kris Humphries Nathan Jawai Cash considerations Greg Buckner Antoine Wright Devean George Hedo Türkoğlu Jerry Stackhouse Cash considerations Toronto 2016 second Cash considerations Cash considerations Cash considerations DAL Dallas Mavericks MIL Milwaukee Bucks PHX Phoenix Suns LAL Los Angeles Lakers MIA Miami Heat TOR Toronto Raptors CLE Cleveland Cavaliers MEM Memphis Grizzlies ORL Orlando Magic 1998 1998 1999 2004 2008 2009 2009 2009"
   },
   {
     "id": "brooklyn",
@@ -86,7 +88,8 @@
     "coverage": "Follows the Brooklyn picks to Young, Brown, the Tatum trade-down, Sexton’s Donovan Mitchell package, and Langford’s Derrick White package through September 3, 2022. White’s 2022 first becomes Blake Wesley. Other player moves, later swap amendments and future picks are untraced.",
     "takeaway": "A swap is a right to exchange picks. Boston still needed another trade to reach No. 3.",
     "image": "kevin-garnett",
-    "imageAlt": "Kevin Garnett playing for Boston in 2008"
+    "imageAlt": "Kevin Garnett playing for Boston in 2008",
+    "searchText": "Kevin Garnett Paul Pierce Jason Terry D.J. White Conditional Boston 2017 second Gerald Wallace Kris Humphries Keith Bogans MarShon Brooks Kris Joseph Brooklyn 2014 first Brooklyn 2016 first Brooklyn 2018 first 2017 BKN swap right 2014 No. 17 James Young 2016 No. 3 Jaylen Brown 2017 No. 1 2017 No. 27 2017 No. 57 2017 No. 3 Lakers / Kings / Sixers first Jayson Tatum Kyrie Irving Isaiah Thomas Jae Crowder Ante Žižić Miami 2020 second 2018 No. 8 Collin Sexton 2019 No. 14 Romeo Langford Derrick White Josh Richardson Boston 2022 first 2028 BOS swap right 2022 No. 25 Blake Wesley Donovan Mitchell Lauri Markkanen Ochai Agbaji Cleveland 2025 first Cleveland 2027 first Cleveland 2029 first 2026 CLE swap right 2028 CLE swap right BOS Boston Celtics BKN Brooklyn Nets New Jersey Nets PHI Philadelphia 76ers CLE Cleveland Cavaliers LAL Los Angeles Lakers SAS San Antonio Spurs UTA Utah Jazz 2013 2014 2016 2017 2017 2017 2017 2018 2018 2019 2022 2022 2022"
   },
   {
     "id": "kobe",
@@ -105,7 +108,8 @@
     "root": "kobe-lakers",
     "cutoff": "1996-07-11",
     "coverage": "The June 26 selection and July 11, 1996 Bryant–Divac exchange only. This is a short origin story; later free agency is outside the trade graph.",
-    "takeaway": "Draft night and the effective trade date are not always the same day."
+    "takeaway": "Draft night and the effective trade date are not always the same day.",
+    "searchText": "1996 No. 13 Kobe Bryant Vlade Divac CHA Charlotte Hornets Charlotte Hornets Charlotte Bobcats LAL Los Angeles Lakers 1996 1996"
   },
   {
     "id": "shaq",
@@ -142,7 +146,8 @@
     "root": "shaq-miami",
     "cutoff": "2024-06-27",
     "coverage": "Follows both Shaq pick returns, Marion’s Dallas route, Butler’s Dallas exchange, the Gasol packages, and the Lakers 2010 first through Vásquez to Powell rights, Anunoby and Mogbo. Stops June 27, 2024. Untraced obligations are labelled; no free agency or shared championship is treated as a trade connection.",
-    "takeaway": "The connection runs through whole packages, with additional assets entering each time."
+    "takeaway": "The connection runs through whole packages, with additional assets entering each time.",
+    "searchText": "Shaquille O’Neal Caron Butler Brian Grant Lamar Odom Miami future first Miami 2007 second Chucky Atkins Kwame Brown Laron Profit 2006 No. 26 Jordan Farmar J.R. Pinnock 2007 No. 50 Renaldas Seibutis Pau Gasol MEM 2010 second Javaris Crittenton Aaron McKie LAL 2008 first LAL 2010 first Cash considerations Marc Gasol Shawn Marion Marcus Banks Cash considerations Jermaine O’Neal Jamario Moon Toronto conditional first Toronto conditional 2010 second Ben Wallace Sasha Pavlović Cleveland 2010 second Cash considerations Kris Humphries Nathan Jawai Cash considerations Greg Buckner Antoine Wright Devean George Hedo Türkoğlu Jerry Stackhouse Cash considerations Toronto 2016 second Cash considerations Cash considerations Cash considerations Brendan Haywood DeShawn Stevenson Cash considerations Josh Howard Drew Gooden Quinton Ross James Singleton 2010 No. 28 Greivis Vásquez Quincy Pondexter 2016 New Orleans second-round swap Tyreke Evans Robin Lopez Terrel Harris Jeff Withey Portland 2016 second 2018 Portland second-round swap Cash considerations John Salmons Patrick Patterson Chuck Hayes Rudy Gay Quincy Acy Aaron Gray Norman Powell Clippers protected 2017 first 2017 No. 23 OG Anunoby Jonas Valančiūnas Delon Wright C.J. Miles Toronto 2024 second Precious Achiuwa Malachi Flynn RJ Barrett Immanuel Quickley Detroit 2024 second 2024 No. 31 Jonathan Mogbo LAL Los Angeles Lakers MIA Miami Heat WAS Washington Wizards DAL Dallas Mavericks MEM Memphis Grizzlies PHX Phoenix Suns TOR Toronto Raptors CLE Cleveland Cavaliers ORL Orlando Magic NOP New Orleans Pelicans New Orleans Hornets SAC Sacramento Kings POR Portland Trail Blazers MIL Milwaukee Bucks NYK New York Knicks 2004 2005 2006 2006 2007 2008 2008 2009 2009 2009 2010 2010 2011 2013 2013 2015 2017 2019 2023 2024"
   },
   {
     "id": "gasol",
@@ -169,7 +174,8 @@
     "root": "pau-lakers",
     "cutoff": "2024-06-27",
     "coverage": "Follows Marc to Toronto and the Lakers 2010 first to Vásquez, then his New Orleans, Sacramento, Toronto and Milwaukee exchanges. The Clippers first becomes Anunoby; the later Knicks package’s Detroit second becomes Mogbo. Stops June 27, 2024. The Lakers 2008 first and other side branches remain untraced.",
-    "takeaway": "A draft-rights entry in one deal can become the headliner of another."
+    "takeaway": "A draft-rights entry in one deal can become the headliner of another.",
+    "searchText": "Pau Gasol MEM 2010 second Kwame Brown Javaris Crittenton Aaron McKie LAL 2008 first LAL 2010 first Cash considerations Marc Gasol 2010 No. 28 Greivis Vásquez Quincy Pondexter 2016 New Orleans second-round swap Tyreke Evans Robin Lopez Terrel Harris Jeff Withey Portland 2016 second 2018 Portland second-round swap Cash considerations John Salmons Patrick Patterson Chuck Hayes Rudy Gay Quincy Acy Aaron Gray Norman Powell Clippers protected 2017 first 2017 No. 23 OG Anunoby Jonas Valančiūnas Delon Wright C.J. Miles Toronto 2024 second Precious Achiuwa Malachi Flynn RJ Barrett Immanuel Quickley Detroit 2024 second 2024 No. 31 Jonathan Mogbo LAL Los Angeles Lakers MEM Memphis Grizzlies NOP New Orleans Pelicans New Orleans Hornets SAC Sacramento Kings POR Portland Trail Blazers TOR Toronto Raptors MIL Milwaukee Bucks NYK New York Knicks 2008 2010 2011 2013 2013 2015 2017 2019 2023 2024"
   },
   {
     "id": "garnett",
@@ -202,7 +208,8 @@
     "coverage": "Follows the Brooklyn picks to Young, Brown, the Tatum trade-down, Sexton’s Donovan Mitchell package, and Langford’s Derrick White package through September 3, 2022. White’s 2022 first becomes Blake Wesley. Other player moves, later swap amendments and future picks are untraced.",
     "takeaway": "Returning a team’s own pick obligation extinguishes a claim; it creates no extra pick.",
     "image": "kevin-garnett",
-    "imageAlt": "Kevin Garnett playing for Boston in 2008"
+    "imageAlt": "Kevin Garnett playing for Boston in 2008",
+    "searchText": "Kevin Garnett Ryan Gomes Gerald Green Al Jefferson Theo Ratliff Sebastian Telfair Boston 2009 first Minnesota first obligation returned Cash considerations Paul Pierce Jason Terry D.J. White Conditional Boston 2017 second Gerald Wallace Kris Humphries Keith Bogans MarShon Brooks Kris Joseph Brooklyn 2014 first Brooklyn 2016 first Brooklyn 2018 first 2017 BKN swap right 2014 No. 17 James Young 2016 No. 3 Jaylen Brown 2017 No. 1 2017 No. 27 2017 No. 57 2017 No. 3 Lakers / Kings / Sixers first Jayson Tatum Kyrie Irving Isaiah Thomas Jae Crowder Ante Žižić Miami 2020 second 2018 No. 8 Collin Sexton 2019 No. 14 Romeo Langford Derrick White Josh Richardson Boston 2022 first 2028 BOS swap right 2022 No. 25 Blake Wesley Donovan Mitchell Lauri Markkanen Ochai Agbaji Cleveland 2025 first Cleveland 2027 first Cleveland 2029 first 2026 CLE swap right 2028 CLE swap right BOS Boston Celtics MIN Minnesota Timberwolves BKN Brooklyn Nets New Jersey Nets PHI Philadelphia 76ers CLE Cleveland Cavaliers LAL Los Angeles Lakers SAS San Antonio Spurs UTA Utah Jazz 2007 2013 2014 2016 2017 2017 2017 2017 2018 2018 2019 2022 2022 2022"
   },
   {
     "id": "harden",
@@ -234,7 +241,8 @@
     "root": "harden-houston",
     "cutoff": "2024-06-26",
     "coverage": "From Houston’s 2012 acquisition through the completed 2021 four-team exchange and 2022 Philadelphia deal. Selected pick branches become Adams, Abrines, McGary, Eason, Nembhard, Ben Sheppard and Reed Sheppard. Stops June 26, 2024; later player moves, swap amendments and unused fallback terms are untraced.",
-    "takeaway": "A protected pick can survive one draft and convey at the next. It is still one obligation."
+    "takeaway": "A protected pick can survive one draft and convey at the next. It is still one obligation.",
+    "searchText": "James Harden Cole Aldrich Daequan Cook Lazar Hayward Kevin Martin Jeremy Lamb Toronto lottery first Dallas protected first Charlotte 2013 second 2013 No. 12 Steven Adams 2013 No. 32 Álex Abrines 2014 No. 21 Mitch McGary Victor Oladipo Dante Exum Milwaukee 2022 first Rodions Kurucs Brooklyn 2022 first Brooklyn 2024 first Brooklyn 2026 first 2021 BKN swap right 2023 BKN swap right 2025 BKN swap right 2027 BKN swap right Jarrett Allen Taurean Prince Aleksandar Vezenkov Caris LeVert Cash considerations 2023 Houston / Dallas / Miami second 2024 Cleveland / Utah second Kelly Olynyk Avery Bradley 2022 MIA swap right Miami 2022 second Ricky Rubio Cleveland 2022/23 first Houston 2022 second Utah 2027 second Paul Millsap Ben Simmons Seth Curry Andre Drummond Philadelphia 2022/23 first Philadelphia protected 2027 first 2022 No. 17 Tari Eason 2022 No. 31 Andrew Nembhard 2023 No. 26 Ben Sheppard 2024 No. 3 Reed Sheppard HOU Houston Rockets OKC Oklahoma City Thunder DAL Dallas Mavericks BKN Brooklyn Nets New Jersey Nets CLE Cleveland Cavaliers IND Indiana Pacers MIA Miami Heat PHI Philadelphia 76ers 2012 2013 2013 2013 2014 2021 2021 2022 2022 2022 2022 2022 2022 2023 2024"
   },
   {
     "id": "kawhi",
@@ -256,7 +264,8 @@
     "root": "kawhi-toronto",
     "cutoff": "2024-06-26",
     "coverage": "Follows Keldon Johnson and Poeltl’s return, then Toronto’s No. 8 into the Dillingham rights trade. Stops June 26, 2024 with Minnesota’s future first and swap outstanding at that point.",
-    "takeaway": "A returning player can open a new branch years after the original exchange."
+    "takeaway": "A returning player can open a new branch years after the original exchange.",
+    "searchText": "Kawhi Leonard Danny Green DeMar DeRozan Jakob Poeltl Toronto 2019 first 2019 No. 29 Keldon Johnson Khem Birch Toronto protected first Toronto 2023 second Toronto 2025 second 2024 No. 8 Rob Dillingham Minnesota 2031 first 2030 MIN swap right TOR Toronto Raptors SAS San Antonio Spurs MIN Minnesota Timberwolves 2018 2019 2023 2024 2024"
   },
   {
     "id": "george",
@@ -283,7 +292,8 @@
     "root": "george-clippers",
     "cutoff": "2023-06-22",
     "coverage": "Both sides of Indiana’s George return are followed: Sabonis into the Haliburton package; Oladipo through the four-team Harden deal, LeVert, Nembhard and Ben Sheppard. Includes the full Clippers package and Jalen Williams. Stops June 22, 2023; other picks and intervening free agency are untraced.",
-    "takeaway": "Shai and the draft obligations arrive in the same package. Their later paths remain distinct."
+    "takeaway": "Shai and the draft obligations arrive in the same package. Their later paths remain distinct.",
+    "searchText": "Paul George Victor Oladipo Domantas Sabonis Shai Gilgeous-Alexander Danilo Gallinari Clippers 2022 first Clippers 2024 first Clippers 2026 first Miami 2021 first Miami protected first 2023 LAC swap right 2025 LAC swap right James Harden Dante Exum Milwaukee 2022 first Rodions Kurucs Brooklyn 2022 first Brooklyn 2024 first Brooklyn 2026 first 2021 BKN swap right 2023 BKN swap right 2025 BKN swap right 2027 BKN swap right Jarrett Allen Taurean Prince Aleksandar Vezenkov Caris LeVert Cash considerations 2023 Houston / Dallas / Miami second 2024 Cleveland / Utah second Kelly Olynyk Avery Bradley 2022 MIA swap right Miami 2022 second Ricky Rubio Cleveland 2022/23 first Houston 2022 second Utah 2027 second Jeremy Lamb Justin Holiday Indiana 2023 second, positions 31–55 Tyrese Haliburton Buddy Hield Tristan Thompson 2022 No. 12 Jalen Williams 2022 No. 31 Andrew Nembhard 2023 No. 26 Ben Sheppard IND Indiana Pacers OKC Oklahoma City Thunder LAC Los Angeles Clippers HOU Houston Rockets BKN Brooklyn Nets New Jersey Nets CLE Cleveland Cavaliers MIA Miami Heat SAC Sacramento Kings 2017 2019 2021 2021 2022 2022 2022 2022 2022 2023"
   },
   {
     "id": "davis",
@@ -309,7 +319,8 @@
     "root": "davis-lakers",
     "cutoff": "2026-02-05",
     "coverage": "The Davis route from 2019 through February 2026, plus Hart into the Reddish exchange and New York’s first into Kris Murray. McCollum’s New Orleans–Washington–Atlanta path is included, as is Chicago’s second through Washington to Dallas. Other rights are untraced beyond their displayed transactions.",
-    "takeaway": "Washington appears in the first deal as a facilitator and in the last as Davis’s destination."
+    "takeaway": "Washington appears in the first deal as a facilitator and in the last as Davis’s destination.",
+    "searchText": "Anthony Davis Lonzo Ball Josh Hart Brandon Ingram Lakers 2021/22 first 2023 LAL swap right Lakers 2024/25 first Cash considerations De’Andre Hunter Isaac Bonga Jemerrio Jones Moritz Wagner Lakers 2022 second Cash considerations Cam Reddish Solomon Hill Brooklyn 2025 second Cash considerations Kevin Knox II Charlotte protected first CJ McCollum Larry Nance Jr. Tony Snell Nickeil Alexander-Walker Didi Louzada Tomáš Satoranský New Orleans conditional first 2026 most-favorable second New Orleans 2027 second Bojan Dubljević Dani Diez Ryan Arcidiacono New York 2023 first Ante Tomić Svi Mykhailiuk Matisse Thybulle Jalen McDaniels New York 2024 second Portland 2029 second 2023 most-favorable second 2027 most-favorable second 2023 No. 23 Kris Murray Luka Dončić Maxi Kleber Markieff Morris Max Christie Lakers 2029 first Jalen Hood-Schifino Clippers 2025 second Dallas 2025 second Cash considerations Cash considerations Kelly Olynyk CHI 2027 second Jordan Poole Saddiq Bey Micah Peavy Cam Whitmore Chicago 2026 second Sacramento 2029 second Mojave King Trae Young Corey Kispert Jaden Hardy D’Angelo Russell Dante Exum Khris Middleton AJ Johnson Marvin Bagley III 2026 least-favorable first Warriors 2030 first PHX 2026 second HOU 2029 second Malaki Branham Tyus Jones LAL Los Angeles Lakers NOP New Orleans Pelicans New Orleans Hornets WAS Washington Wizards ATL Atlanta Hawks NYK New York Knicks POR Portland Trail Blazers PHI Philadelphia 76ers CHA Charlotte Hornets Charlotte Hornets Charlotte Bobcats DAL Dallas Mavericks UTA Utah Jazz HOU Houston Rockets 2019 2022 2022 2023 2023 2025 2025 2026 2026"
   },
   {
     "id": "kyrie",
@@ -329,7 +340,8 @@
     "root": "irving-dallas",
     "cutoff": "2026-02-05",
     "coverage": "Follows Morris from the Kyrie package into the Luka deal, then Davis into Washington. This is not a claim that Kyrie was traded for any of those returns. Brooklyn’s picks are untraced.",
-    "takeaway": "Shared teammates can connect trades whose headline players never change hands for one another."
+    "takeaway": "Shared teammates can connect trades whose headline players never change hands for one another.",
+    "searchText": "Kyrie Irving Markieff Morris Spencer Dinwiddie Dorian Finney-Smith Dallas 2029 first Dallas 2027 second Dallas 2029 second Luka Dončić Maxi Kleber Anthony Davis Max Christie Lakers 2029 first Jalen Hood-Schifino Clippers 2025 second Dallas 2025 second Cash considerations Cash considerations Jaden Hardy D’Angelo Russell Dante Exum Khris Middleton AJ Johnson Marvin Bagley III 2026 least-favorable first Warriors 2030 first PHX 2026 second CHI 2027 second HOU 2029 second Malaki Branham Tyus Jones DAL Dallas Mavericks BKN Brooklyn Nets New Jersey Nets LAL Los Angeles Lakers UTA Utah Jazz WAS Washington Wizards CHA Charlotte Hornets Charlotte Hornets Charlotte Bobcats 2023 2025 2026"
   },
   {
     "id": "lillard",
@@ -350,7 +362,8 @@
     "root": "lillard-milwaukee",
     "cutoff": "2025-07-07",
     "coverage": "Includes Brogdon’s 2022 Boston arrival as backward context for the 2023 Holiday package, then Lillard’s three-team trade, Holiday to Boston and the July 7, 2025 Simons exchange. Future draft rights and other player branches are untraced.",
-    "takeaway": "The final 2025 exchange contains no draft picks; early reports described a different proposal."
+    "takeaway": "The final 2025 exchange contains no draft picks; early reports described a different proposal.",
+    "searchText": "Malcolm Brogdon Daniel Theis Aaron Nesmith Malik Fitts Juwan Morgan Nik Stauskas Boston 2023 first Damian Lillard Jrue Holiday Milwaukee 2029 first 2028 MIL swap right 2030 MIL swap right Deandre Ayton Toumani Camara Jusuf Nurkić Nassir Little Keon Johnson Grayson Allen Robert Williams III Golden State 2024 first Boston 2029 first Anfernee Simons BOS Boston Celtics IND Indiana Pacers MIL Milwaukee Bucks POR Portland Trail Blazers PHX Phoenix Suns 2022 2023 2023 2025"
   },
   {
     "id": "towns",
@@ -369,7 +382,8 @@
     "root": "towns-new-york",
     "cutoff": "2025-06-25",
     "coverage": "The complete October 2, 2024 three-team trade and Detroit’s first conveying to Minnesota as No. 17 in 2025. Other players and second-round outcomes are untraced.",
-    "takeaway": "The original franchise of a traded pick can be a team that did not participate in this deal."
+    "takeaway": "The original franchise of a traded pick can be a team that did not participate in this deal.",
+    "searchText": "Karl-Anthony Towns Julius Randle Donte DiVincenzo Keita Bates-Diop Detroit protected first Charlie Brown Jr. DaQuan Jeffries Duane Washington Jr. Golden State 2026 second New York 2031 second Cash considerations 2025 composite second James Nnaji 2025 No. 17 Joan Beringer MIN Minnesota Timberwolves NYK New York Knicks CHA Charlotte Hornets Charlotte Hornets Charlotte Bobcats 2024 2025"
   },
   {
     "id": "butler",
@@ -388,6 +402,271 @@
     "root": "butler-warriors",
     "cutoff": "2025-06-25",
     "coverage": "The final February 6 five-team package and the Golden State first becoming Miami’s No. 20. Some minor second-round terms were undisclosed; those assets are labelled and left untraced.",
-    "takeaway": "A headline is an entry point. The full exchange is the story."
+    "takeaway": "A headline is an entry point. The full exchange is the story.",
+    "searchText": "Jimmy Butler Undisclosed second-round right 1 Undisclosed second-round right 2 Cash considerations Andrew Wiggins Kyle Anderson Golden State protected first Davion Mitchell Dennis Schröder Lindy Waters III 2031 least-favorable second KJ Martin 2028 second via Detroit Josh Richardson 2031 most-favorable second Cash considerations P.J. Tucker Lakers 2026 second Cash considerations 2025 No. 20 Kasparas Jakučionis GSW Golden State Warriors San Francisco Warriors MIA Miami Heat UTA Utah Jazz DET Detroit Pistons TOR Toronto Raptors 2025 2025"
+  },
+  {
+    "id": "kidd",
+    "title": "The Kidd round trip",
+    "headline": "A long way home.",
+    "subtitle": "Dallas to Phoenix. New Jersey to Dallas. Follow the packages, then watch one Dallas pick travel with Vince Carter.",
+    "category": "Dallas",
+    "year": 1996,
+    "endYear": 2010,
+    "focus": "DAL",
+    "color": "#6eb9fa",
+    "transactions": [
+      "kidd-phoenix",
+      "cassell-new-jersey",
+      "buckner-draft",
+      "kidd-new-jersey",
+      "kidd-dallas",
+      "anderson-ryan-draft",
+      "carter-orlando",
+      "carter-phoenix"
+    ],
+    "root": "kidd-phoenix",
+    "cutoff": "2010-12-18",
+    "coverage": "Kidd’s three trades, the Cassell branch, two verified Dallas/Phoenix pick conveyances and Ryan Anderson’s Orlando exchange. Stops with Carter’s 2010 Phoenix package; later free agency and other pick branches are untraced.",
+    "takeaway": "The Dallas first in Kidd’s return package became Ryan Anderson, who later traveled to Orlando with Vince Carter.",
+    "searchText": "Jason Kidd Tony Dumas Loren Meyer Michael Finley A.C. Green Sam Cassell Phoenix conditional 1997/98 second Jim Jackson Chris Gatling George McCloud Eric Montross Shawn Bradley Robert Pack Khalid Reeves Ed O’Bannon 1998 No. 53 Greg Buckner Chris Dudley Stephon Marbury Johnny Newman Soumaila Samake Malik Allen Antoine Wright Devin Harris DeSagana Diop Maurice Ager Keith Van Horn Trenton Hassell Dallas 2008 protected first Dallas 2010 first Cash considerations 2008 No. 21 Ryan Anderson Vince Carter Courtney Lee Rafer Alston Tony Battie Marcin Gortat Mickaël Piétrus Orlando 2011 first Cash considerations Jason Richardson Hedo Türkoğlu Earl Clark DAL Dallas Mavericks PHX Phoenix Suns BKN Brooklyn Nets New Jersey Nets ORL Orlando Magic 1996 1997 1998 2001 2008 2008 2009 2010"
+  },
+  {
+    "id": "carter",
+    "title": "Vince changes the picture",
+    "headline": "The next flight.",
+    "subtitle": "Toronto, New Jersey, Orlando, Phoenix. Follow Vince—and the first-round pick whose route begins in Dallas.",
+    "category": "Classic",
+    "year": 2004,
+    "endYear": 2010,
+    "focus": "TOR",
+    "color": "#f07c91",
+    "transactions": [
+      "carter-new-jersey",
+      "graham-joey-draft",
+      "kidd-dallas",
+      "anderson-ryan-draft",
+      "carter-orlando",
+      "carter-phoenix"
+    ],
+    "root": "carter-new-jersey",
+    "cutoff": "2010-12-18",
+    "coverage": "Three Carter trades, Joey Graham’s Philadelphia-origin pick and the Dallas origin of Ryan Anderson’s selection. Stops in December 2010; remaining picks and subsequent free-agent signings are untraced.",
+    "takeaway": "Carter and Anderson were a two-player package. Anderson’s draft pick had come from Dallas in a different star’s trade.",
+    "searchText": "Vince Carter Alonzo Mourning Aaron Williams Eric Williams Philadelphia protected 2005 first Denver protected 2006 first 2005 No. 16 Joey Graham Jason Kidd Malik Allen Antoine Wright Devin Harris DeSagana Diop Maurice Ager Keith Van Horn Trenton Hassell Dallas 2008 protected first Dallas 2010 first Cash considerations 2008 No. 21 Ryan Anderson Courtney Lee Rafer Alston Tony Battie Marcin Gortat Mickaël Piétrus Orlando 2011 first Cash considerations Jason Richardson Hedo Türkoğlu Earl Clark TOR Toronto Raptors BKN Brooklyn Nets New Jersey Nets DAL Dallas Mavericks ORL Orlando Magic PHX Phoenix Suns 2004 2005 2008 2008 2009 2010"
+  },
+  {
+    "id": "carmelo",
+    "title": "The clause that kept going",
+    "headline": "Five years in the fine print.",
+    "subtitle": "A star to New York. A swap that becomes Jamal Murray. And the other pick’s route into Toronto’s Kawhi package.",
+    "category": "Classic",
+    "year": 2011,
+    "endYear": 2024,
+    "focus": "DEN",
+    "color": "#f0ca72",
+    "transactions": [
+      "carmelo-new-york",
+      "miller-quincy-draft",
+      "bargnani-new-york",
+      "denver-new-york-swap",
+      "murray-jamal-draft",
+      "poeltl-draft",
+      "carmelo-oklahoma-city",
+      "robinson-mitchell-draft",
+      "kawhi-toronto",
+      "carmelo-atlanta",
+      "keldon-draft",
+      "poeltl-toronto",
+      "dillingham-draft",
+      "dillingham-minnesota"
+    ],
+    "root": "carmelo-new-york",
+    "cutoff": "2024-06-26",
+    "coverage": "The final 2011 package, selected 2012/2016/2018 pick outcomes, Anthony’s 2017/2018 trades, and Poeltl’s existing route through the 2024 draft. Other players, seconds, the 2014 first and the protected OKC 2022 obligation are not followed after their displayed transfers.",
+    "takeaway": "Denver’s swap and Toronto’s separate Bargnani trade divided two firsts. Murray and Poeltl are documented outcomes of different entitlements.",
+    "searchText": "Carmelo Anthony Chauncey Billups Anthony Carter Renaldo Balkman Shelden Williams Wilson Chandler Raymond Felton Danilo Gallinari Timofey Mozgov New York 2014 first Golden State 2012 second Golden State 2013 second 2016 NYK swap right Cash considerations Kosta Koufos Corey Brewer Eddy Curry Anthony Randolph Cash considerations Denver 2015 second 2012 No. 38 Quincy Miller Andrea Bargnani Steve Novak Marcus Camby Quentin Richardson Less favorable NYK / DEN 2016 first Oklahoma City 2014 second New York 2017 second 2016 No. 7 2016 No. 9 Jamal Murray Jakob Poeltl Enes Kanter Doug McDermott Chicago 2018 second 2018 No. 36 Mitchell Robinson Kawhi Leonard Danny Green DeMar DeRozan Toronto 2019 first Oklahoma City protected 2022 first Dennis Schröder Mike Muscala Timothé Luwawu-Cabarrot Justin Anderson 2019 No. 29 Keldon Johnson Khem Birch Toronto protected first Toronto 2023 second Toronto 2025 second 2024 No. 8 Rob Dillingham Minnesota 2031 first 2030 MIN swap right DEN Denver Nuggets NYK New York Knicks MIN Minnesota Timberwolves TOR Toronto Raptors OKC Oklahoma City Thunder SAS San Antonio Spurs ATL Atlanta Hawks PHI Philadelphia 76ers 2011 2012 2013 2016 2016 2016 2017 2018 2018 2018 2019 2023 2024 2024"
+  },
+  {
+    "id": "barkley",
+    "title": "Barkley’s Dallas connection",
+    "headline": "Follow Sam Cassell.",
+    "subtitle": "Barkley goes to Houston. One player in Phoenix’s return soon becomes part of Dallas’s Jason Kidd exchange.",
+    "category": "Classic",
+    "year": 1992,
+    "endYear": 2001,
+    "focus": "PHX",
+    "color": "#ef9a64",
+    "transactions": [
+      "barkley-phoenix",
+      "barkley-houston",
+      "kidd-phoenix",
+      "cassell-new-jersey",
+      "buckner-draft",
+      "kidd-new-jersey"
+    ],
+    "root": "barkley-phoenix",
+    "cutoff": "2001-07-18",
+    "coverage": "Both Barkley trades, Cassell’s Phoenix–Dallas–New Jersey route, the Kidd exchange and the Phoenix second’s 1998 conveyance. Stops at Kidd’s 2001 New Jersey arrival; Horry and other received assets remain bounded branches.",
+    "takeaway": "Cassell connects the Barkley and Kidd packages. That does not mean Barkley alone was exchanged for everything that followed.",
+    "searchText": "Charles Barkley Jeff Hornacek Tim Perry Andrew Lang Phoenix 1999 second Sam Cassell Robert Horry Mark Bryant Chucky Brown Jason Kidd Tony Dumas Loren Meyer Michael Finley A.C. Green Phoenix conditional 1997/98 second Jim Jackson Chris Gatling George McCloud Eric Montross Shawn Bradley Robert Pack Khalid Reeves Ed O’Bannon 1998 No. 53 Greg Buckner Chris Dudley Stephon Marbury Johnny Newman Soumaila Samake PHI Philadelphia 76ers PHX Phoenix Suns HOU Houston Rockets DAL Dallas Mavericks BKN Brooklyn Nets New Jersey Nets 1992 1996 1996 1997 1998 2001"
+  },
+  {
+    "id": "wilt",
+    "title": "The original giant moves",
+    "headline": "Even Wilt was traded.",
+    "subtitle": "Two blockbuster exchanges, three franchises. Follow Chamberlain from San Francisco to Philadelphia to Los Angeles.",
+    "category": "Classic",
+    "year": 1965,
+    "endYear": 1968,
+    "focus": "PHI",
+    "color": "#78aaff",
+    "transactions": [
+      "wilt-philadelphia",
+      "wilt-lakers"
+    ],
+    "root": "wilt-philadelphia",
+    "cutoff": "1968-07-09",
+    "coverage": "Only the complete 1965 and 1968 Chamberlain packages. Cash is included without invented amounts. Earlier franchise relocation and subsequent player transactions are outside the selected route.",
+    "takeaway": "The San Francisco Warriors and Philadelphia 76ers were separate franchises. These were two trades, not a franchise returning home.",
+    "searchText": "Wilt Chamberlain Connie Dierking Paul Neumann Cash considerations Lee Shaffer Darrall Imhoff Archie Clark Jerry Chambers Cash considerations GSW Golden State Warriors San Francisco Warriors PHI Philadelphia 76ers LAL Los Angeles Lakers 1965 1968"
+  },
+  {
+    "id": "chris-paul",
+    "title": "The Chris Paul trail",
+    "headline": "One point guard.\nA league of echoes.",
+    "subtitle": "From Lob City to a draft obligation that reaches Dallas. Follow Paul, then follow what travels the other way.",
+    "category": "Modern",
+    "year": 2011,
+    "endYear": 2026,
+    "focus": "LAC",
+    "color": "#96a2f3",
+    "transactions": [
+      "paul-clippers",
+      "rivers-draft",
+      "paul-houston",
+      "paul-westbrook",
+      "paul-phoenix",
+      "beal-phoenix",
+      "paul-warriors",
+      "topic-draft",
+      "peavy-draft",
+      "mccollum-washington",
+      "trae-wizards",
+      "davis-wizards"
+    ],
+    "root": "paul-clippers",
+    "cutoff": "2026-02-05",
+    "coverage": "Paul’s completed 2011, 2017, 2019, 2020 and two 2023 trades; selected Rivers, Topić, Peavy, Poole and draft-asset branches through February 2026. Paul’s later free agency and untraced draft outcomes are excluded.",
+    "takeaway": "A single career can connect very different packages. The players and picks received alongside each other remain separate paths.",
+    "searchText": "Chris Paul New Orleans 2015 second Memphis conditional 2015 second Eric Gordon Al-Farouq Aminu Chris Kaman 2012 Clippers / Minnesota first 2012 No. 10 Austin Rivers Patrick Beverley Sam Dekker Montrezl Harrell Darrun Hilliard DeAndre Liggins Lou Williams Kyle Wiltjer Houston 2018 first Cash considerations Russell Westbrook Houston 2024 first Houston 2026 first 2021 HOU swap right 2025 HOU swap right Abdel Nader Ricky Rubio Kelly Oubre Jr. Ty Jerome Jalen Lecque Phoenix future first Bradley Beal Jordan Goodwin Isaiah Todd Landry Shamet Phoenix 2024 second Phoenix 2025 second PHX 2026 second Phoenix 2027 second Phoenix 2030 second 2024 PHX swap right 2026 PHX swap right 2028 PHX swap right 2030 PHX swap right Cash considerations Bilal Coulibaly Jarace Walker Washington 2029 second Phoenix 2028 second Jordan Poole Patrick Baldwin Jr. Ryan Rollins Warriors 2030 first Golden State 2027 second Cash considerations 2024 No. 12 Nikola Topić 2025 No. 40 Micah Peavy CJ McCollum Kelly Olynyk CHI 2027 second Saddiq Bey Cam Whitmore Chicago 2026 second Sacramento 2029 second Mojave King Trae Young Corey Kispert Anthony Davis Jaden Hardy D’Angelo Russell Dante Exum Khris Middleton AJ Johnson Marvin Bagley III 2026 least-favorable first HOU 2029 second Malaki Branham Tyus Jones NOP New Orleans Pelicans New Orleans Hornets LAC Los Angeles Clippers HOU Houston Rockets OKC Oklahoma City Thunder PHX Phoenix Suns WAS Washington Wizards IND Indiana Pacers GSW Golden State Warriors San Francisco Warriors ATL Atlanta Hawks DAL Dallas Mavericks CHA Charlotte Hornets Charlotte Hornets Charlotte Bobcats 2011 2012 2017 2019 2020 2023 2023 2024 2025 2025 2026 2026"
+  },
+  {
+    "id": "lob-city",
+    "title": "The other side of Lob City",
+    "headline": "Follow the return.\nFind another blockbuster.",
+    "subtitle": "Beverley reaches the Gobert package. Houston’s first reaches Golden State. Both begin in the same Clippers return.",
+    "category": "Modern",
+    "year": 2017,
+    "endYear": 2023,
+    "focus": "LAC",
+    "color": "#96a2f3",
+    "transactions": [
+      "hilliard-houston",
+      "liggins-houston",
+      "paul-houston",
+      "gallinari-clippers",
+      "spellman-draft",
+      "spellman-warriors",
+      "russell-minnesota",
+      "kuminga-draft",
+      "beverley-memphis",
+      "beverley-minnesota",
+      "gobert-minnesota",
+      "beverley-lakers",
+      "keyonte-draft"
+    ],
+    "root": "paul-houston",
+    "cutoff": "2023-06-22",
+    "coverage": "Two traced branches of the 2017 Paul package: the Houston first through Spellman and the Russell–Wiggins exchange; Beverley through Minnesota and the Gobert package. Stops at the 2023 draft. Other players and subsequent moves are outside the route.",
+    "takeaway": "The least famous pieces can reveal the longest connections. A later package still includes contributions from several assets.",
+    "searchText": "Darrun Hilliard Cash considerations DeAndre Liggins Cash considerations Chris Paul Patrick Beverley Sam Dekker Montrezl Harrell Lou Williams Kyle Wiltjer Houston 2018 first Cash considerations Danilo Gallinari Jamal Crawford Diamond Stone Cash considerations Washington 2019 second 2018 No. 30 Omari Spellman Damian Jones Golden State 2026 second D’Angelo Russell Jacob Evans III Andrew Wiggins Minnesota 2021 first Minnesota 2021 second 2021 No. 7 Jonathan Kuminga Rajon Rondo Daniel Oturu Eric Bledsoe Jarrett Culver Juancho Hernangómez Rudy Gobert Malik Beasley Leandro Bolmaro Jarred Vanderbilt Minnesota 2023 first Minnesota 2025 first Minnesota 2027 first Minnesota 2029 first 2026 MIN swap right Walker Kessler Talen Horton-Tucker Stanley Johnson 2023 No. 16 Keyonte George DET Detroit Pistons HOU Houston Rockets DAL Dallas Mavericks LAC Los Angeles Clippers DEN Denver Nuggets ATL Atlanta Hawks GSW Golden State Warriors San Francisco Warriors MIN Minnesota Timberwolves MEM Memphis Grizzlies UTA Utah Jazz LAL Los Angeles Lakers 2017 2017 2017 2017 2018 2019 2020 2021 2021 2021 2022 2022 2023"
+  },
+  {
+    "id": "westbrook",
+    "title": "The Westbrook exchange",
+    "headline": "Two point guards.\nYears of consequences.",
+    "subtitle": "Houston and Oklahoma City exchange stars. The picks, and Paul’s next trades, keep the story moving.",
+    "category": "Modern",
+    "year": 2019,
+    "endYear": 2026,
+    "focus": "OKC",
+    "color": "#77b8f9",
+    "transactions": [
+      "paul-westbrook",
+      "paul-phoenix",
+      "westbrook-washington",
+      "beal-phoenix",
+      "paul-warriors",
+      "topic-draft",
+      "peavy-draft",
+      "mccollum-washington",
+      "trae-wizards",
+      "davis-wizards"
+    ],
+    "root": "paul-westbrook",
+    "cutoff": "2026-02-05",
+    "coverage": "The 2019 exchange, Westbrook’s 2020 Washington move, Topić’s 2024 selection and Paul-return branches through February 2026. Westbrook’s Lakers arrival and subsequent career are outside this route. Original future-pick terms are recorded; untraced outcomes are not current holdings.",
+    "takeaway": "An exchange of stars can leave several independent trails. The Houston first and the Paul package have different afterlives.",
+    "searchText": "Russell Westbrook Chris Paul Houston 2024 first Houston 2026 first 2021 HOU swap right 2025 HOU swap right Abdel Nader Ricky Rubio Kelly Oubre Jr. Ty Jerome Jalen Lecque Phoenix future first John Wall Washington protected first Bradley Beal Jordan Goodwin Isaiah Todd Landry Shamet Phoenix 2024 second Phoenix 2025 second PHX 2026 second Phoenix 2027 second Phoenix 2030 second 2024 PHX swap right 2026 PHX swap right 2028 PHX swap right 2030 PHX swap right Cash considerations Bilal Coulibaly Jarace Walker Washington 2029 second Phoenix 2028 second Jordan Poole Patrick Baldwin Jr. Ryan Rollins Warriors 2030 first Golden State 2027 second Cash considerations 2024 No. 12 Nikola Topić 2025 No. 40 Micah Peavy CJ McCollum Kelly Olynyk CHI 2027 second Saddiq Bey Cam Whitmore Chicago 2026 second Sacramento 2029 second Mojave King Trae Young Corey Kispert Anthony Davis Jaden Hardy D’Angelo Russell Dante Exum Khris Middleton AJ Johnson Marvin Bagley III 2026 least-favorable first HOU 2029 second Malaki Branham Tyus Jones OKC Oklahoma City Thunder HOU Houston Rockets PHX Phoenix Suns WAS Washington Wizards IND Indiana Pacers GSW Golden State Warriors San Francisco Warriors NOP New Orleans Pelicans New Orleans Hornets ATL Atlanta Hawks DAL Dallas Mavericks CHA Charlotte Hornets Charlotte Hornets Charlotte Bobcats 2019 2020 2020 2023 2023 2024 2025 2025 2026 2026"
+  },
+  {
+    "id": "durant",
+    "title": "What Durant left behind",
+    "headline": "A goodbye.\nSeveral new beginnings.",
+    "subtitle": "Russell’s package brings Wiggins and a pick. Johnson’s next move brings a first seven years away.",
+    "category": "Modern",
+    "year": 2019,
+    "endYear": 2025,
+    "focus": "GSW",
+    "color": "#efcd64",
+    "transactions": [
+      "durant-brooklyn",
+      "russell-minnesota",
+      "kuminga-draft",
+      "durant-phoenix",
+      "russell-lakers",
+      "butler-warriors",
+      "johnson-denver"
+    ],
+    "root": "durant-brooklyn",
+    "cutoff": "2025-07-08",
+    "coverage": "Durant’s 2019 sign-and-trade and 2023 Phoenix package; selected Russell, Wiggins, Kuminga and Cameron Johnson branches through July 2025. Durant’s 2025 Houston deal, the Bridges branch and remaining pick outcomes are not traced. Later player movement is not implied absent.",
+    "takeaway": "The 2020 return belongs to the Russell–Spellman–Evans package. Durant’s departure connects to that package without becoming its sole cause.",
+    "searchText": "Kevin Durant Golden State 2020 protected first D’Angelo Russell Shabazz Napier Treveon Graham Omari Spellman Jacob Evans III Andrew Wiggins Minnesota 2021 first Minnesota 2021 second 2021 No. 7 Jonathan Kuminga T.J. Warren Mikal Bridges Cameron Johnson Phoenix 2023 first Phoenix 2025 first Phoenix 2027 first Phoenix 2029 first 2028 PHX swap right Jae Crowder Milwaukee 2028 second Milwaukee 2029 second Juan Pablo Vaulet Jordan Nwora George Hill Serge Ibaka 2023 Bucks / Cavaliers / Warriors second Milwaukee 2024 second Indiana 2025 second returned Cash considerations Malik Beasley Jarred Vanderbilt Russell Westbrook Damian Jones Juan Toscano-Anderson Lakers 2027 first Mike Conley Nickeil Alexander-Walker Utah 2025 second Utah 2026 second 2024 Washington / Memphis second Jimmy Butler Undisclosed second-round right 1 Undisclosed second-round right 2 Cash considerations Kyle Anderson Golden State protected first Davion Mitchell Dennis Schröder Lindy Waters III 2031 least-favorable second KJ Martin 2028 second via Detroit Josh Richardson 2031 most-favorable second Cash considerations P.J. Tucker Lakers 2026 second Cash considerations Michael Porter Jr. Denver 2032 first GSW Golden State Warriors San Francisco Warriors BKN Brooklyn Nets New Jersey Nets MIN Minnesota Timberwolves PHX Phoenix Suns MIL Milwaukee Bucks IND Indiana Pacers LAL Los Angeles Lakers UTA Utah Jazz MIA Miami Heat DET Detroit Pistons TOR Toronto Raptors DEN Denver Nuggets 2019 2020 2021 2023 2023 2025 2025"
+  },
+  {
+    "id": "gobert",
+    "title": "The Gobert package",
+    "headline": "One center.\nSeveral futures.",
+    "subtitle": "Utah receives players, draft rights and obligations. Follow the routes that separate almost immediately.",
+    "category": "Modern",
+    "year": 2021,
+    "endYear": 2023,
+    "focus": "UTA",
+    "color": "#aea0f3",
+    "transactions": [
+      "beverley-memphis",
+      "beverley-minnesota",
+      "gobert-minnesota",
+      "beverley-lakers",
+      "russell-lakers",
+      "keyonte-draft"
+    ],
+    "root": "gobert-minnesota",
+    "cutoff": "2023-06-22",
+    "coverage": "Beverley’s 2021 route into Minnesota, the complete July 2022 Gobert transaction, Beverley’s Lakers move, the February 2023 three-team package and the Keyonte George selection. Later Utah pick pooling, trades and conveyances are outside this story.",
+    "takeaway": "Four future firsts, one swap and an already-drafted player are different assets. Beasley and Vanderbilt later join a package with other contributions.",
+    "searchText": "Patrick Beverley Rajon Rondo Daniel Oturu Eric Bledsoe Jarrett Culver Juancho Hernangómez Rudy Gobert Malik Beasley Leandro Bolmaro Jarred Vanderbilt Minnesota 2023 first Minnesota 2025 first Minnesota 2027 first Minnesota 2029 first 2026 MIN swap right Walker Kessler Talen Horton-Tucker Stanley Johnson D’Angelo Russell Russell Westbrook Damian Jones Juan Toscano-Anderson Lakers 2027 first Mike Conley Nickeil Alexander-Walker Utah 2025 second Utah 2026 second 2024 Washington / Memphis second 2023 No. 16 Keyonte George LAC Los Angeles Clippers MEM Memphis Grizzlies MIN Minnesota Timberwolves UTA Utah Jazz LAL Los Angeles Lakers 2021 2021 2022 2022 2023 2023"
   }
 ]

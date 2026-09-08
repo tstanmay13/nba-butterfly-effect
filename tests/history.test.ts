@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import type { Archive, StoryData } from '../lib/model';
 import {
   assetJourney,
+  assetLabel,
   compareEvents,
   eventAssets,
   identityFamily,
@@ -226,4 +227,23 @@ void test('all facts in the public event graph have reviewed source references',
     for (const s of t.sources)
       assert.ok(archive.sources[s]?.url.startsWith('https://'));
   }
+});
+
+void test('retired player rights remain distinct from draft rights and active players', () => {
+  const trade = event('wilt-philadelphia');
+  const rights = trade.moves.find((m) => m.asset === 'shaffer')!;
+  assert.equal(rights.form, 'player-rights');
+  assert.equal(
+    assetLabel(archive.assets.shaffer, rights.form),
+    'Player rights',
+  );
+  assert.equal(ownership([trade]).get('shaffer')?.form, 'player-rights');
+  assert.equal(
+    teamName(story('wilt'), 'GSW', trade.date),
+    'San Francisco Warriors',
+  );
+  assert.equal(
+    teamName(story('wilt'), 'PHI', trade.date),
+    'Philadelphia 76ers',
+  );
 });
